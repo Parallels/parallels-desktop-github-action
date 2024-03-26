@@ -38,7 +38,7 @@ jobs:
         id: npm-ci
         run: npm ci
       - name: build bundle
-        run: npm run build
+        run: npm run bundle
         env:
           NODE_ENV: production
           AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}

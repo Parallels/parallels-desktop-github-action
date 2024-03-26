@@ -65,6 +65,9 @@ export async function run(telemetry: Telemetry): Promise<void> {
     core.info(`Starting operation: ${operation}`)
     switch (operation) {
       case 'test':
+        core.setOutput('vm_id', 'test_vm_id')
+        core.setOutput('vm_name', 'test_vm_name')
+        core.setOutput('host', 'test_host')
         core.info('Test operation')
         break
       case 'health-check':

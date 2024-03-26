@@ -61,6 +61,9 @@ export async function run(telemetry: Telemetry): Promise<void> {
 
     core.info(`Starting operation: ${operation}`)
     switch (operation) {
+      case 'test':
+        core.info('Test operation')
+        break
       case 'health-check':
         await HealthUseCase(telemetry, devops)
         break

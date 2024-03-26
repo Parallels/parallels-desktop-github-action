@@ -55,8 +55,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          badge-path: ./test-badge.svg
-          title: stable
+          operation: 'test'
 
       - name: Print Output
         id: output

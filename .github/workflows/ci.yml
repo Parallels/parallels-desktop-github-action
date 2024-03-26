@@ -55,6 +55,7 @@ jobs:
         id: test-action
         uses: ./
         with:
+          host_url: localhost
           operation: 'test'
 
       - name: Print Output

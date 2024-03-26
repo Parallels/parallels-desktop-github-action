@@ -45,18 +45,21 @@ export async function run(telemetry: Telemetry): Promise<void> {
     // creating the devops client
     const baseUrl = `${schema}://${url}/api`
     const devops = new DevOps(baseUrl, is_orchestrator ? 'orchestrator' : 'host')
-    // checking if the host is alive and running
-    const health = await devops.getHealthStatus()
-    if (health !== 'up') {
-      core.setFailed(`Host is down: ${baseUrl}`)
-      return
-    }
-    const license = await devops.getPDLicense()
-    if (license.uuid !== '') {
-      telemetry.setUserId(license.uuid)
-    }
-    if (license.serial) {
-      telemetry.setLicense(license.serial)
+
+    if (operation !== 'test') {
+      // checking if the host is alive and running
+      const health = await devops.getHealthStatus()
+      if (health !== 'up') {
+        core.setFailed(`Host is down: ${baseUrl}`)
+        return
+      }
+      const license = await devops.getPDLicense()
+      if (license.uuid !== '') {
+        telemetry.setUserId(license.uuid)
+      }
+      if (license.serial) {
+        telemetry.setLicense(license.serial)
+      }
     }
 
     core.info(`Starting operation: ${operation}`)

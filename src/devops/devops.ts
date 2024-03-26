@@ -48,8 +48,7 @@ export class DevOps {
   async getHealthStatus(): Promise<'up' | 'down'> {
     try {
       const url = this.getUrl('/health/probe', 'none')
-      const response =
-        await this.client.get<HealthProbeResponse>(url)
+      const response = await this.client.get<HealthProbeResponse>(url)
       if (response.StatusCode !== 200) {
         return 'down'
       }
@@ -62,8 +61,7 @@ export class DevOps {
   async getHealthCheck(): Promise<HealthCheckResponse> {
     try {
       const url = this.getUrl('/health/system?full=true', 'host')
-      const response =
-        await this.client.get<HealthCheckResponse>(url)
+      const response = await this.client.get<HealthCheckResponse>(url)
       if (response.StatusCode !== 200) {
         return response.Data as HealthCheckResponse
       }
@@ -91,7 +89,7 @@ export class DevOps {
       if (!idOrName) {
         throw new Error('Invalid id or name')
       }
-      const encodedUrl = encodeURIComponent(idOrName);
+      const encodedUrl = encodeURIComponent(idOrName)
       const url = this.getUrl(`/machines/${encodedUrl}/clone`, 'host')
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
@@ -134,7 +132,7 @@ export class DevOps {
       if (!idOrName) {
         throw new Error('Invalid id or name')
       }
-      const encodedUrl = encodeURIComponent(idOrName);
+      const encodedUrl = encodeURIComponent(idOrName)
       const url = this.getUrl(`/machines/${encodedUrl}`, this.target)
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
@@ -201,7 +199,7 @@ export class DevOps {
       if (!idOrName) {
         throw new Error('Invalid id or name')
       }
-      const encodedUrl = encodeURIComponent(idOrName);
+      const encodedUrl = encodeURIComponent(idOrName)
       const url = `${this.baseUrl}/v1/machines/${encodedUrl}/execute`
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
@@ -218,7 +216,7 @@ export class DevOps {
       await this.login()
     }
     if (this.token) {
-      const currentDate = Math.floor(Date.now() / 1000);
+      const currentDate = Math.floor(Date.now() / 1000)
       if (currentDate > this.tokenExpiry) {
         await this.login()
       }
@@ -243,14 +241,14 @@ export class DevOps {
     const apiSecret = core.getInput('api-secret')
     const url = `${this.baseUrl}/v1/auth/token`
     if (apiKey && apiSecret) {
-      const encodedKey = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
+      const encodedKey = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64')
       this.apiKey = encodedKey
-      const response: LoginResponse = { apiKey: apiKey, expires_at: 0 }
+      const response: LoginResponse = { apiKey, expires_at: 0 }
       return response
     } else {
       const request: LoginRequest = {
         email: username,
-        password: password
+        password
       }
 
       try {

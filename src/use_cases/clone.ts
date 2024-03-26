@@ -1,8 +1,8 @@
-import { AmplitudeEvent, EVENT_CLONE_USE_CASE, Telemetry } from "../telemetry/telemetry"
-import DevOps from "../devops/devops"
-import * as core from '@actions/core';
-import { v4 as uuidv4 } from 'uuid';
-import { CloneRequest } from '../devops/models/clone';
+import { AmplitudeEvent, EVENT_CLONE_USE_CASE, Telemetry } from '../telemetry/telemetry'
+import DevOps from '../devops/devops'
+import * as core from '@actions/core'
+import { v4 as uuidv4 } from 'uuid'
+import { CloneRequest } from '../devops/models/clone'
 
 export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
   try {
@@ -16,7 +16,7 @@ export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promis
         {
           name: 'host',
           value: client.baseUrl
-        },
+        }
       ]
     }
 
@@ -26,7 +26,7 @@ export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promis
 
     // Creating the clone request for the devops client
     const cloneRequest: CloneRequest = {
-      clone_name: `${base_vm}_${uuidv4()}`,
+      clone_name: `${base_vm}_${uuidv4()}`
     }
 
     const response = await client.CloneVM(base_vm, cloneRequest)

@@ -1,10 +1,5 @@
 import axios from 'axios'
-import type {
-  AxiosResponse,
-  AxiosRequestConfig,
-  RawAxiosRequestHeaders,
-  AxiosError
-} from 'axios'
+import type { AxiosResponse, AxiosRequestConfig, RawAxiosRequestHeaders, AxiosError } from 'axios'
 import { APIError } from '../devops/models/api_error'
 
 export interface HttpHeader {
@@ -49,7 +44,12 @@ class HttpClient {
     return this.call<T>(HttpMethod.DELETE, url, undefined, headers)
   }
 
-  private async call<T>(method: HttpMethod, url: string, data: unknown, headers?: HttpHeader[]): Promise<HttpResponse<T>> {
+  private async call<T>(
+    method: HttpMethod,
+    url: string,
+    data: unknown,
+    headers?: HttpHeader[]
+  ): Promise<HttpResponse<T>> {
     const config: AxiosRequestConfig = {}
     if (headers) {
       const requestHeaders: RawAxiosRequestHeaders = {}

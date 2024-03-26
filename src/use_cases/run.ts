@@ -1,7 +1,7 @@
-import { AmplitudeEvent, EVENT_RUN_USE_CASE, Telemetry } from "../telemetry/telemetry"
-import DevOps from "../devops/devops"
-import * as core from '@actions/core';
-import { ExecuteRequest } from "src/devops/models/execute";
+import { AmplitudeEvent, EVENT_RUN_USE_CASE, Telemetry } from '../telemetry/telemetry'
+import DevOps from '../devops/devops'
+import * as core from '@actions/core'
+import { ExecuteRequest } from '../devops/models/execute'
 
 export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
   try {
@@ -15,7 +15,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
         {
           name: 'host',
           value: client.baseUrl
-        },
+        }
       ]
     }
 
@@ -28,13 +28,15 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     }
     const machineStatus = await client.getMachineStatus(machine_name)
     if (machineStatus.status !== 'running') {
-      core.setFailed(`Error executing command on virtual machine ${machine_name}: the current status is not running but instead ${machineStatus.status}`)
+      core.setFailed(
+        `Error executing command on virtual machine ${machine_name}: the current status is not running but instead ${machineStatus.status}`
+      )
       return false
     }
 
     // Creating the clone request for the devops client
     const cloneRequest: ExecuteRequest = {
-      command: command,
+      command
     }
 
     const response = await client.ExecuteOnVm(machine_name, cloneRequest)

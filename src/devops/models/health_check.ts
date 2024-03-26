@@ -1,11 +1,11 @@
 export interface HealthCheck {
-  healthy: boolean;
-  message: string;
-  services: Service[];
+  healthy: boolean
+  message: string
+  services: Service[]
 }
 
 export interface Service {
-  name: string;
-  healthy: boolean;
-  message?: string;
+  name: string
+  healthy: boolean
+  message?: string
 }

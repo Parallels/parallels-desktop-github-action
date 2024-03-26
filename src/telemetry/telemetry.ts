@@ -1,6 +1,6 @@
 import * as amplitude from '@amplitude/analytics-node'
 
-export let AMPLITUDE_API_KEY = ''
+export const AMPLITUDE_API_KEY = ''
 const AMPLITUDE_EVENT_PREFIX = 'PD-EXTENSION-'
 export const EVENT_START = `${AMPLITUDE_EVENT_PREFIX}START`
 export const EVENT_HEALTH_USE_CASE = `${AMPLITUDE_EVENT_PREFIX}HEALTH_USE_CASE`
@@ -38,12 +38,14 @@ export class Telemetry {
 
   async init() {
     if (!AMPLITUDE_API_KEY) {
-      AMPLITUDE_API_KEY = process.env.AMPLITUDE_API_KEY || ''
+      this.amplitude_api_key = process.env.AMPLITUDE_API_KEY || ''
+    } else {
+      this.amplitude_api_key = AMPLITUDE_API_KEY
     }
-    if (!AMPLITUDE_API_KEY) {
+
+    if (this.amplitude_api_key) {
       this.enabled = false
     }
-    this.amplitude_api_key = AMPLITUDE_API_KEY
 
     await amplitude.init(AMPLITUDE_API_KEY, {
       flushIntervalMillis: 100,

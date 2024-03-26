@@ -1,4 +1,4 @@
 export interface VirtualMachineStatus {
-  id: string;
-  status: string;
+  id: string
+  status: string
 }

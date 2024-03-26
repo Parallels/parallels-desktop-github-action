@@ -9,6 +9,7 @@ const telemetry = new Telemetry()
 telemetry.init()
 
 console.log('Running action...')
+
 run(telemetry)
   .then(() => {
     console.log('Action complete!')

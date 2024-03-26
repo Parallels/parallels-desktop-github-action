@@ -1,9 +1,9 @@
-import { AmplitudeEvent, EVENT_CREATE_USE_CASE as EVENT_PULL_USE_CASE, Telemetry } from "../telemetry/telemetry"
-import DevOps from "../devops/devops"
-import * as core from '@actions/core';
-import ImageHost from "../imageHost";
-import { v4 as uuidv4 } from 'uuid';
-import { CreateVmRequest, CreateVmRequestSpecs } from 'src/devops/models/create';
+import { AmplitudeEvent, EVENT_CREATE_USE_CASE as EVENT_PULL_USE_CASE, Telemetry } from '../telemetry/telemetry'
+import DevOps from '../devops/devops'
+import * as core from '@actions/core'
+import ImageHost from '../image_host'
+import { v4 as uuidv4 } from 'uuid'
+import { CreateVmRequest, CreateVmRequestSpecs } from '../devops/models/create'
 
 export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
   try {
@@ -17,7 +17,7 @@ export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise
         {
           name: 'host',
           value: client.baseUrl
-        },
+        }
       ]
     }
 
@@ -60,7 +60,7 @@ function generateCreateMachineRequest(imageHost: ImageHost): CreateVmRequest {
     catalog_manifest: {
       catalog_id: imageHost.catalogId,
       version: imageHost.version,
-      connection: imageHost.getConnectionString(),
+      connection: imageHost.getConnectionString()
     }
   }
   const specs: CreateVmRequestSpecs = {}

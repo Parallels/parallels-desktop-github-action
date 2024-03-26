@@ -63,7 +63,7 @@ describe('Telemetry', () => {
       {
         property1: 'value1',
         property2: 'value2',
-        license: license
+        license
       },
       { user_id: 'github-action' }
     )

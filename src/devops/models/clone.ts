@@ -1,8 +1,8 @@
 export interface CloneRequest {
-  clone_name: string;
+  clone_name: string
 }
 
 export interface CloneResponse {
-  id: string;
-  status: string;
+  id: string
+  status: string
 }

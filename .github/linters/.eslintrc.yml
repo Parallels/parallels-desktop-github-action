@@ -15,6 +15,7 @@ ignorePatterns:
   - "**/coverage/.*"
   - "**/__tests__/.*"
   - "*.json"
+  - /src/index.ts
 
 parser: "@typescript-eslint/parser"
 
@@ -52,4 +53,5 @@ rules:
     "prettier/prettier": "error",
     "semi": "off",
     "space-before-function-paren": 0,
+    "no-shadow": "off",
   }

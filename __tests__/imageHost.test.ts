@@ -1,4 +1,4 @@
-import { ImageHost } from '../src/imageHost'
+import { ImageHost } from '../src/image_host'
 
 describe('ImageHost', () => {
   let imageHost: ImageHost

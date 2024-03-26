@@ -37,12 +37,14 @@ jobs:
       - name: Install Dependencies
         id: npm-ci
         run: npm ci
-      - name: build bundle
+      - name: Build bundle
         run: npm run bundle
         env:
           NODE_ENV: production
           AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
       - name: Push
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --global user.email "cjlapao@gmail.com"
           git config --global user.name "cjlapao"

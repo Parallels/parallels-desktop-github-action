@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="145" height="20" role="img" aria-label="Coverage: 80.00%">
+  <title>Coverage: 80.00%</title>
+  <linearGradient id="s" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="r">
+    <rect width="145" height="20" rx="4" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#r)">
+    <rect width="77" height="20" fill="#555"/>
+    <rect x="77" width="68" height="20" fill="#2E8B57"/>
+    <rect width="145" height="20" fill="url(#s)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana" text-rendering="geometricPrecision" font-size="11">
+    <text aria-hidden="true" x="38.5" y="15" fill="#010101" fill-opacity=".3" textLength="57">Coverage</text>
+    <text x="38.5" y="14" fill="#fff" textLength="57">Coverage</text>
+    <text x="111" y="15" textLength="48" fill="#010101" fill-opacity=".3">80.00%</text>
+    <text x="111" y="14" fill="#fff" textLength="48">80.00%</text>
+  </g>
+</svg>

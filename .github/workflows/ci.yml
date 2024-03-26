@@ -55,9 +55,9 @@ jobs:
         id: test-action
         uses: ./
         with:
-          badge-path: ./test-badge.svg
-          title: stable
+          host_url: localhost
+          operation: 'test'
 
       - name: Print Output
         id: output
-        run: echo "${{ steps.test-action.outputs.badge-path }}"
+        run: echo "${{ steps.test-action.outputs.vm_id }}"

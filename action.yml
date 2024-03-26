@@ -1,0 +1,65 @@
+name: "Parallels Desktop DevOps Actions"
+description: "GitHub Action to run Parallels Desktop VMs in your CI/CD pipeline"
+author: "Parallels Desktop"
+branding:
+  icon: "maximize"
+  color: "blue"
+
+inputs:
+  operation:
+    description: "The operation to perform"
+    required: true
+    default: "pull"
+  username:
+    description: "The username to use to connect to the devops api service"
+    required: false
+  password:
+    description: "The password to use to connect to the devops api service"
+    required: false
+  api-key:
+    description: "The api key to use to connect to the devops api service"
+    required: false
+  api-secret:
+    description: "The api secret to use to connect to the devops api service"
+    required: false
+  orchestrator_url:
+    description: "The orchestrator url where we are connecting to"
+    required: false
+  host_url:
+    description: "The host url where we are connecting to"
+    required: false
+  insecure:
+    description: "Whether to use ssl or not"
+    required: false
+    default: "false"
+  base_vm:
+    description: "The name of the base virtual machine to use on clone operations"
+    required: false
+  machine_name:
+    description: "The name of the virtual machine to use on clone, start, stop, delete operations"
+    required: false
+  base_image:
+    description: "The name of the base image to use when creating a new virtual machine from the catalog"
+    required: false
+  machine_cpu_count:
+    description: "The number of cpus to use when creating a new virtual machine from the catalog"
+    required: false
+  machine_memory_size:
+    description: "The amount of memory to use when creating a new virtual machine from the catalog"
+    required: false
+  run:
+    description: "The run command to execute on the virtual machine"
+    required: false
+
+# Define your outputs here.
+outputs:
+  vm_id:
+    description: "The id of the virtual machine"
+  vm_name:
+    description: "The name of the virtual machine"
+  host:
+    description: "The host of the virtual machine"
+
+runs:
+  using: node20
+  main: dist/index.js

@@ -38,7 +38,9 @@ jobs:
         id: npm-ci
         run: npm ci
       - name: Build bundle
-        run: npm run bundle
+        run: |
+          echo $AMPLITUDE_API_KEY
+          npm run bundle
         env:
           NODE_ENV: production
           AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
@@ -67,6 +69,7 @@ jobs:
           echo "new_version=$NEW_VERSION" >> "$GITHUB_ENV"
 
       - name: Create PR
+        if: false
         run: |
           LAST_PR=$(gh pr list --repo ${{ github.repository }} --limit 1 --state merged --search "Release version" --json number | jq -r '.[0].number')
           ./.github/workflow_scripts/generate-release-notes.sh ${{ github.repository }} "$LAST_PR" ${{ env.new_version }}

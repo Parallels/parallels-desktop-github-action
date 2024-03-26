@@ -52,10 +52,11 @@ jobs:
 
           npm run test
           npm run bundle
+          sed -i "s/\"version\": \"[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"version\": \"$NEW_VERSION\"/g" package.json
 
           git checkout -b release/"$NEW_VERSION"
 
-          git add VERSION ./dist/* ./badges/*
+          git add package.json VERSION ./dist/* ./badges/*
 
           git commit -m "Release action version $NEW_VERSION"
 

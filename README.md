@@ -1,4 +1,4 @@
-# Parallels Desktop DevOps Github Action
+# Parallels Desktop DevOps GitHub Action
 
 ![coverage](https://raw.githubusercontent.com/Parallels/parallels-desktop-github-action/main/badges/coverage.svg)
 [![Lint Codebase](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/linter.yml/badge.svg)](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/linter.yml)

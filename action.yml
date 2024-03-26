@@ -1,0 +1,85 @@
+name: "Simple Badge Generator"
+description: "Serverless generation of simple badges"
+author: "Carlos Lapao"
+branding:
+  icon: "maximize"
+  color: "blue"
+
+inputs:
+  badge-type:
+    description: "The type of badge to generate, you can choose between simple, boolean, semaphore and cobertura"
+    required: false
+    default: "simple"
+  badge-theme:
+    description: "The theme of the badge, you can choose between flat, plastic"
+    required: false
+    default: "plastic"
+  title:
+    description: "The title of the badge"
+    required: true
+  title-fill-color:
+    description: "The fill color of the title"
+    required: false
+  title-font-color:
+    description: "The font color of the title"
+    required: false
+  value:
+    description: "The value of the badge"
+    required: false
+  value-fill-color:
+    description: "The fill color of the coverage value, if left empty it will be automatically calculated"
+    required: false
+  value-font-color:
+    description: "The font color of the coverage value, if left empty it will be automatically calculated"
+    required: false
+  badge-path:
+    description: "Where to save the generated badge"
+    required: false
+    default: "./badges/cobertura.svg"
+  badge-icon:
+    description: "The icon to use in the badge, the available icons are: none, github, discord"
+    required: false
+  cobertura-path:
+    description: "The path to the Cobertura XML file"
+    required: false
+  cobertura-color-yellow-threshold:
+    description: "The threshold for the yellow color in cobertura percentage"
+    required: false
+    default: "40"
+  cobertura-color-green-threshold:
+    description: "The threshold for the green color in cobertura percentage"
+    required: false
+    default: "80"
+  semaphore-red-value:
+    description: "The value for displaying red in semaphore"
+    required: false
+  semaphore-red-color:
+    description: "The color for displaying red in semaphore, if none is provided it will be automatically calculated"
+    required: false
+  semaphore-yellow-value:
+    description: "The value for displaying yellow in semaphore"
+    required: false
+  semaphore-yellow-color:
+    description: "The color for displaying yellow in semaphore, if none is provided it will be automatically calculated"
+    required: false
+  semaphore-green-value:
+    description: "The value for displaying green in semaphore"
+    required: false
+  semaphore-green-color:
+    description: "The color for displaying green in semaphore, if none is provided it will be automatically calculated"
+    required: false
+  boolean-true-color:
+    description: "The color for displaying red in boolean, if none is provided it will be automatically calculated"
+    required: false
+  boolean-false-color:
+    description: "The color for displaying green in boolean, if none is provided it will be automatically calculated"
+    required: false
+
+# Define your outputs here.
+outputs:
+  badge-path:
+    description: "The path to the generated badge"
+
+runs:
+  using: node20
+  main: dist/index.js

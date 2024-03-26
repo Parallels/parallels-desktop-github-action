@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="106.96000000000001" height="20" role="img" aria-label="License: MIT">
+  <title>License: MIT</title>
+  <clipPath id="r">
+    <rect width="106.96000000000001" height="20" rx="0" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#r)">
+    <rect width="64.4" height="20" fill="#555"/>
+    <rect x="64.4" width="42.56" height="20" fill="#e9aa2b"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana" text-rendering="geometricPrecision" font-size="11">
+    <text aria-hidden="true" x="32.2" y="15" fill="#010101" fill-opacity=".3" textLength="44.4">License</text>
+    <text x="32.2" y="14" fill="#fff" textLength="44.4">License</text>
+    <text x="85.68" y="15" textLength="22.56" fill="#010101" fill-opacity=".3">MIT</text>
+    <text x="85.68" y="14" fill="#fff" textLength="22.56">MIT</text>
+  </g>
+</svg>

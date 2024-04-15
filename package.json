@@ -86,17 +86,17 @@
         "uuid": "^9.0.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.24.3",
+        "@babel/core": "^7.24.4",
         "@babel/eslint-parser": "^7.24.1",
-        "@babel/preset-env": "^7.24.3",
+        "@babel/preset-env": "^7.24.4",
         "@types/axios": "^0.14.0",
         "@types/jest": "^29.5.12",
         "@types/jsdom": "^21.1.6",
-        "@types/node": "^20.12.2",
+        "@types/node": "^20.12.7",
         "@types/string-pixel-width": "^1.10.3",
         "@types/uuid": "^9.0.8",
-        "@typescript-eslint/eslint-plugin": "^7.4.0",
-        "@typescript-eslint/parser": "^7.4.0",
+        "@typescript-eslint/eslint-plugin": "^7.6.0",
+        "@typescript-eslint/parser": "^7.6.0",
         "@vercel/ncc": "^0.38.1",
         "babel-preset-jest": "^29.6.3",
         "eslint": "^8.57.0",
@@ -107,7 +107,7 @@
         "prettier": "^3.2.5",
         "ts-jest": "^29.1.2",
         "ts-node": "^10.9.2",
-        "typescript": "^5.4.3",
+        "typescript": "^5.4.5",
         "uglify-js": "^3.17.4"
     }
 }

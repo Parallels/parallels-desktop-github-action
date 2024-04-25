@@ -26,6 +26,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       core.setFailed(`Invalid command ${command}`)
       return false
     }
+    const lines = command.split('\n')
     const machineStatus = await client.getMachineStatus(machine_name)
     if (machineStatus.status !== 'running') {
       core.setFailed(
@@ -33,19 +34,23 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       )
       return false
     }
+    let output = ''
+    lines.forEach(async line => {
+      // Creating the clone request for the devops client
+      const cloneRequest: ExecuteRequest = {
+        command: line
+      }
 
-    // Creating the clone request for the devops client
-    const cloneRequest: ExecuteRequest = {
-      command
-    }
+      const response = await client.ExecuteOnVm(machine_name, cloneRequest)
+      core.info(`Executed command virtual machine: ${response.stdout}`)
+      if (response.stderr || response.exit_code !== 0) {
+        core.setFailed(`Error executing command on virtual machine: ${response.stderr}, exit code: ${response.exit_code}`)
+        return false
+      }
+      output += response.stdout
+    })
 
-    const response = await client.ExecuteOnVm(machine_name, cloneRequest)
-    core.info(`Executed command virtual machine: ${response.stdout}`)
-    if (response.stderr || response.exit_code !== 0) {
-      core.setFailed(`Error executing command on virtual machine: ${response.stderr}, exit code: ${response.exit_code}`)
-      return false
-    }
-    core.setOutput('stdout', response.stdout)
+    core.setOutput('stdout', output)
 
     telemetry.track(event)
     return true

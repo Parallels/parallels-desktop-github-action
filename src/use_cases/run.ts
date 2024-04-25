@@ -36,11 +36,20 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     }
     let output = ''
     for (const line of lines) {
+      // Skip empty lines or commented lines
+      if (!line || line === '' || line === '\n') {
+        continue
+      }
+
       const cloneRequest: ExecuteRequest = {
         command: line
       }
+
       const response = await client.ExecuteOnVm(machine_name, cloneRequest)
-      core.info(`Executed command virtual machine: ${response.stdout}`)
+      core.info(`Executed command virtual machine: ${line}`)
+      if (response.stdout) {
+        core.info(`Output: ${response.stdout}`)
+      }
       if (response.stderr || response.exit_code !== 0) {
         core.setOutput('stdout', response.stdout)
         core.setOutput('stderr', response.stderr)

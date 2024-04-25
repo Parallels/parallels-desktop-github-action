@@ -20,7 +20,8 @@ permissions:
 
 jobs:
   check-dist:
-    name: Check dist/
+    if: github.event_name == 'pull_request' && github.head_ref != 'release/*'
+    name: Check dist directory
     runs-on: ubuntu-latest
 
     permissions:

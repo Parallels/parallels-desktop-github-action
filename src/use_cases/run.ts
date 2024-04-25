@@ -47,7 +47,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       }
 
       core.info(`Waiting for virtual machine to be ready`)
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 1000))
     }
 
     let output = ''

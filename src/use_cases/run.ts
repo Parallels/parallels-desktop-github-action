@@ -35,20 +35,20 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       return false
     }
     let output = ''
-    lines.forEach(async line => {
-      // Creating the clone request for the devops client
+    for (const line of lines) {
       const cloneRequest: ExecuteRequest = {
         command: line
       }
-
       const response = await client.ExecuteOnVm(machine_name, cloneRequest)
       core.info(`Executed command virtual machine: ${response.stdout}`)
       if (response.stderr || response.exit_code !== 0) {
+        core.setOutput('stdout', response.stdout)
+        core.setOutput('stderr', response.stderr)
         core.setFailed(`Error executing command on virtual machine: ${response.stderr}, exit code: ${response.exit_code}`)
         return false
       }
       output += response.stdout
-    })
+    }
 
     core.setOutput('stdout', output)
 

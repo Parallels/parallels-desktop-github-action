@@ -34,6 +34,22 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       )
       return false
     }
+
+    // waiting for machine to be ready
+    const checkCommand = 'echo "ready"'
+    const checkCommandRequest: ExecuteRequest = {
+      command: checkCommand
+    }
+    for (let i = 0; i < 100; i++) {
+      const response = await client.ExecuteOnVm(machine_name, checkCommandRequest)
+      if (response.exit_code === 0) {
+        break
+      }
+
+      core.info(`Waiting for virtual machine to be ready`)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+
     let output = ''
     for (const line of lines) {
       // Skip empty lines or commented lines

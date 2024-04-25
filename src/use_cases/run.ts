@@ -44,7 +44,9 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       if (response.stderr || response.exit_code !== 0) {
         core.setOutput('stdout', response.stdout)
         core.setOutput('stderr', response.stderr)
-        core.setFailed(`Error executing command on virtual machine: ${response.stderr}, exit code: ${response.exit_code}`)
+        core.setFailed(
+          `Error executing command on virtual machine: ${response.stderr}, exit code: ${response.exit_code}`
+        )
         return false
       }
       output += response.stdout

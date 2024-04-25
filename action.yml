@@ -50,6 +50,9 @@ inputs:
   run:
     description: "The run command to execute on the virtual machine"
     required: false
+  start_after_op:
+    description: "Whether to start the virtual machine after the operation"
+    required: false
 
 # Define your outputs here.
 outputs:

@@ -1,7 +1,7 @@
 {
     "name": "parallels-desktop-devops-action",
     "description": "GitHub Action to run Parallels Desktop VMs in your CI/CD pipeline",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "author": "Carlos Lapao",
     "private": true,
     "homepage": "https://github.com/cjlapao/cobertura-xml-badge-generator#readme",

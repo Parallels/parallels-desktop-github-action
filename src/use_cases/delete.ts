@@ -18,11 +18,12 @@ export async function DeleteUseCase(telemetry: Telemetry, client: DevOps): Promi
       ]
     }
 
-    core.info(`Deleting virtual machine`)
     const machine_name = core.getInput('machine_name')
+    core.info(`Deleting virtual machine ${machine_name}`)
 
     const machineStatus = await client.getMachineStatus(machine_name)
     if (machineStatus.status !== 'stopped') {
+      core.info(`Stopping virtual machine ${machine_name}`)
       await client.setMachineAction(machine_name, 'stop')
     }
 

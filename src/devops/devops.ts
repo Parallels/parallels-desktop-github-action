@@ -182,7 +182,7 @@ export class DevOps {
           response = await this.client.get<VirtualMachineStatus>(`${url}/start`, headers)
           break
         case 'stop':
-          response = await this.client.get<VirtualMachineStatus>(`/v1/machines/${idOrName}/stop`, headers)
+          response = await this.client.get<VirtualMachineStatus>(`${url}/stop`, headers)
           break
         default:
           throw new Error('Invalid action')

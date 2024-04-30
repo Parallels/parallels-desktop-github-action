@@ -112,8 +112,9 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
           max_attempts = 0
           output += response.stdout
         }
+
         const timeoutSeconds = Number(core.getInput('timeout_seconds')) || 0
-        if (timeoutSeconds > 0) {
+        if (timeoutSeconds > 0 && max_attempts > 0) {
           core.info(`Waiting ${timeoutSeconds} seconds before executing the next command`)
           await new Promise(resolve => setTimeout(resolve, timeoutSeconds * 1000))
         }

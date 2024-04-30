@@ -37,7 +37,6 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       return false
     }
 
-
     // waiting for machine to be ready
     let checkCommand = 'echo "ready"'
     if (machine.OS.startsWith('win')) {
@@ -68,7 +67,6 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
         break
       }
 
-
       core.info(`Machine ${machine_name} does not have ip assigned, waiting 1s`)
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
@@ -98,7 +96,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
         }
 
         if (response.stderr || response.exit_code !== 0) {
-          if (max_attempts == 0) {
+          if (max_attempts === 0) {
             core.setOutput('stdout', response.stdout)
             core.setOutput('stderr', response.stderr)
             core.setFailed(

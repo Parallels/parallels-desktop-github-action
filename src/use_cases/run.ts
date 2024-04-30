@@ -45,6 +45,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
 
     core.info(`Checking if virtual ${machine_name} machine is ready`)
     for (let i = 0; i < 100; i++) {
+      core.info(`Checking if virtual machine ${machine_name} is ready [${i}/100]`)
       const response = await client.ExecuteOnVm(machine_name, checkCommandRequest)
       if (response.exit_code === 0) {
         break

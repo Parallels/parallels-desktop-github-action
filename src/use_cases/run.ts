@@ -75,7 +75,10 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
 
     let output = ''
     for (const line of lines) {
-      let max_attempts = Number(core.getInput('machine_name')) || 1
+      let max_attempts = Number(core.getInput('max_attempts')) || 1
+      if (max_attempts > 1) {
+        core.info(`Setting max attempts to ${max_attempts}`)
+      }
       while (max_attempts > 0) {
         max_attempts--
         core.info(`Executing command on virtual machine: ${line}`)

@@ -53,6 +53,14 @@ inputs:
   start_after_op:
     description: "Whether to start the virtual machine after the operation"
     required: false
+  max_attempts:
+    description: "The maximum number of attempts to make when waiting for the operation to complete"
+    required: false
+    default: "1"
+  timeout_seconds:
+    description: "The number of seconds to wait between attempts"
+    required: false
+    default: "1"
 
 # Define your outputs here.
 outputs:

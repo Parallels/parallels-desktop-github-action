@@ -75,30 +75,46 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
 
     let output = ''
     for (const line of lines) {
-      core.info(`Executing command on virtual machine: ${line}`)
-      // Skip empty lines or commented lines
-      if (!line || line === '' || line === '\n') {
-        continue
-      }
+      let max_attempts = Number(core.getInput('machine_name')) || 1
+      while (max_attempts > 0) {
+        max_attempts--
+        core.info(`Executing command on virtual machine: ${line}`)
+        // Skip empty lines or commented lines
+        if (!line || line === '' || line === '\n') {
+          continue
+        }
 
-      const cloneRequest: ExecuteRequest = {
-        command: line
-      }
+        const cloneRequest: ExecuteRequest = {
+          command: line
+        }
 
-      const response = await client.ExecuteOnVm(machine_name, cloneRequest)
-      core.info(`Executed command virtual machine: ${line}`)
-      if (response.stdout) {
-        core.info(`Output:\n${response.stdout}`)
+        const response = await client.ExecuteOnVm(machine_name, cloneRequest)
+        core.info(`Executed command virtual machine: ${line}`)
+        if (response.stdout) {
+          core.info(`Output:\n${response.stdout}`)
+        }
+
+        if (response.stderr || response.exit_code !== 0) {
+          if (max_attempts == 0) {
+            core.setOutput('stdout', response.stdout)
+            core.setOutput('stderr', response.stderr)
+            core.setFailed(
+              `Error executing command on virtual machine: ${response.stderr}, exit code: ${response.exit_code}`
+            )
+            return false
+          } else {
+            core.info(`Retrying command execution on virtual machine: ${line} [${max_attempts} attempts left]`)
+          }
+        } else {
+          max_attempts = 0
+          output += response.stdout
+        }
+        const timeoutSeconds = Number(core.getInput('timeout_seconds')) || 0
+        if (timeoutSeconds > 0) {
+          core.info(`Waiting ${timeoutSeconds} seconds before executing the next command`)
+          await new Promise(resolve => setTimeout(resolve, timeoutSeconds * 1000))
+        }
       }
-      if (response.stderr || response.exit_code !== 0) {
-        core.setOutput('stdout', response.stdout)
-        core.setOutput('stderr', response.stderr)
-        core.setFailed(
-          `Error executing command on virtual machine: ${response.stderr}, exit code: ${response.exit_code}`
-        )
-        return false
-      }
-      output += response.stdout
     }
 
     core.setOutput('stdout', output)

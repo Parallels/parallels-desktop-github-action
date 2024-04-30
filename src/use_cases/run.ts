@@ -50,8 +50,9 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       if (response.exit_code === 0) {
         break
       }
+      core.info(`Machine ${machine_name} is not ready yet, waiting 1s, exit code: ${response.exit_code}`)
 
-      core.info(`Waiting for virtual machine to be ready`)
+      core.info(`Waiting 1s for virtual machine to be ready`)
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
 

@@ -18,8 +18,8 @@ export async function StartUseCase(telemetry: Telemetry, client: DevOps): Promis
       ]
     }
 
-    core.info(`Starting virtual machine`)
     const machine_name = core.getInput('machine_name')
+    core.info(`Starting virtual machine ${machine_name}`)
 
     const machineStatus = await client.getMachineStatus(machine_name)
     if (machineStatus.status === 'running') {

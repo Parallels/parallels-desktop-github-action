@@ -18,8 +18,8 @@ export async function StopUseCase(telemetry: Telemetry, client: DevOps): Promise
       ]
     }
 
-    core.info(`Stopping virtual machine`)
     const machine_name = core.getInput('machine_name')
+    core.info(`Stopping virtual machine ${machine_name}`)
 
     const machineStatus = await client.getMachineStatus(machine_name)
     if (machineStatus.status === 'stopped') {

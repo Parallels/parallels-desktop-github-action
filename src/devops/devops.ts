@@ -157,6 +157,19 @@ export class DevOps {
     }
   }
 
+  async getMachine(idOrName: string): Promise<VirtualMachine> {
+    try {
+      const url = this.getUrl(`/machines/${idOrName}`, this.target)
+      const headers: HttpHeader[] = []
+      const authHeader = await this.getAuthenticationHeader()
+      headers.push(authHeader)
+      const response = await this.client.get<VirtualMachine>(url, headers)
+      return response.Data
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
   async getMachineStatus(idOrName: string): Promise<VirtualMachineStatus> {
     try {
       const url = this.getUrl(`/machines/${idOrName}/status`, this.target)

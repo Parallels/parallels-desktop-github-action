@@ -20,9 +20,9 @@ export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promis
       ]
     }
 
-    core.info(`Cloning virtual machine`)
     let vmId = ''
     const base_vm = core.getInput('base_vm')
+    core.info(`Cloning virtual machine ${base_vm}`)
 
     // Creating the clone request for the devops client
     const cloneRequest: CloneRequest = {
@@ -37,7 +37,7 @@ export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promis
 
     const startAfterCreate = core.getInput('start_after_op')
     if (startAfterCreate === 'true') {
-      core.info(`Starting virtual machine`)
+      core.info(`Starting virtual machine ${vmId}`)
       await client.setMachineAction(vmId, 'start')
       await new Promise(resolve => setTimeout(resolve, 3000))
       core.info(`Started virtual machine: ${vmId}`)

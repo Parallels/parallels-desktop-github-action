@@ -29,16 +29,22 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     const lines = command.split('\n')
 
     core.info(`Checking the machine ${machine_name} status`)
-    const machineStatus = await client.getMachineStatus(machine_name)
-    if (machineStatus.status !== 'running') {
+    const machine = await client.getMachine(machine_name)
+    if (machine.State !== 'running') {
       core.setFailed(
-        `Error executing command on virtual machine ${machine_name}: the current status is not running but instead ${machineStatus.status}`
+        `Error executing command on virtual machine ${machine_name}: the current status is not running but instead ${machine.State}`
       )
       return false
     }
 
+
     // waiting for machine to be ready
-    const checkCommand = 'echo "ready"'
+    let checkCommand = 'echo "ready"'
+    if (machine.OS.startsWith('win')) {
+      core.info(`Machine ${machine_name} is a Windows machine`)
+      checkCommand = 'cmd.exe /C echo ready'
+    }
+
     const checkCommandRequest: ExecuteRequest = {
       command: checkCommand
     }

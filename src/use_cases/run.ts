@@ -27,6 +27,8 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       return false
     }
     const lines = command.split('\n')
+
+    core.info(`Checking the machine ${machine_name} status`)
     const machineStatus = await client.getMachineStatus(machine_name)
     if (machineStatus.status !== 'running') {
       core.setFailed(

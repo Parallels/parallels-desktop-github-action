@@ -42,14 +42,13 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     let checkCommand = 'echo "ready"'
     if (machine.OS.startsWith('win')) {
       core.info(`Machine ${machine_name} is a Windows machine`)
-      checkCommand = 'cmd.exe /C echo ready'
+      checkCommand = 'cmd.exe /C echo "ready"'
     }
 
     const checkCommandRequest: ExecuteRequest = {
       command: checkCommand
     }
 
-    core.info(`Checking if virtual ${machine_name} machine is ready`)
     for (let i = 0; i < 100; i++) {
       core.info(`Checking if virtual machine ${machine_name} is ready [${i}/100]`)
       const response = await client.ExecuteOnVm(machine_name, checkCommandRequest)
@@ -59,6 +58,26 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       core.info(`Machine ${machine_name} is not ready yet, waiting 1s, exit code: ${response.exit_code}`)
 
       core.info(`Waiting 1s for virtual machine to be ready`)
+      await new Promise(resolve => setTimeout(resolve, 1000))
+    }
+
+    const hasNetworkCommand: ExecuteRequest = {
+      command: `prlctl list ${machine_name} -a -f -j`
+    }
+    for (let i = 0; i < 100; i++) {
+      core.info(`Checking if virtual machine ${machine_name} has network [${i}/100]`)
+      const response = await client.ExecuteOnVm(machine_name, hasNetworkCommand)
+      if (response.exit_code === 0) {
+        const data = JSON.parse(response.stdout)
+        if (data && data[0] && data[0].ip && data[0].ip !== '-') {
+          core.info(`Machine ${machine_name} has ip assigned ${data[0].ip}`)
+          break
+        }
+      }
+
+      core.info(`Machine ${machine_name} does not have ip assigned, waiting 1s, exit code: ${response.exit_code}`)
+
+      core.info(`Waiting 1s for virtual machine to get network assigned`)
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
 

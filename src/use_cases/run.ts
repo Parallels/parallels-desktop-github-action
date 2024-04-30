@@ -19,8 +19,8 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       ]
     }
 
-    core.info(`Execution command on virtual machine`)
     const machine_name = core.getInput('machine_name')
+    core.info(`Execution command on virtual machine ${machine_name}`)
     const command = core.getInput('run')
     if (!command) {
       core.setFailed(`Invalid command ${command}`)
@@ -40,6 +40,8 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     const checkCommandRequest: ExecuteRequest = {
       command: checkCommand
     }
+
+    core.info(`Checking if virtual ${machine_name} machine is ready`)
     for (let i = 0; i < 100; i++) {
       const response = await client.ExecuteOnVm(machine_name, checkCommandRequest)
       if (response.exit_code === 0) {
@@ -52,6 +54,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
 
     let output = ''
     for (const line of lines) {
+      core.info(`Executing command on virtual machine: ${line}`)
       // Skip empty lines or commented lines
       if (!line || line === '' || line === '\n') {
         continue
@@ -64,7 +67,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       const response = await client.ExecuteOnVm(machine_name, cloneRequest)
       core.info(`Executed command virtual machine: ${line}`)
       if (response.stdout) {
-        core.info(`Output: ${response.stdout}`)
+        core.info(`Output:\n${response.stdout}`)
       }
       if (response.stderr || response.exit_code !== 0) {
         core.setOutput('stdout', response.stdout)

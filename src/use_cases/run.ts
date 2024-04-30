@@ -56,28 +56,20 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
         break
       }
       core.info(`Machine ${machine_name} is not ready yet, waiting 1s, exit code: ${response.exit_code}`)
-
-      core.info(`Waiting 1s for virtual machine to be ready`)
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
 
-    const hasNetworkCommand: ExecuteRequest = {
-      command: `prlctl list ${machine_name} -a -f -j`
-    }
     for (let i = 0; i < 100; i++) {
       core.info(`Checking if virtual machine ${machine_name} has network [${i}/100]`)
-      const response = await client.ExecuteOnVm(machine_name, hasNetworkCommand)
-      if (response.exit_code === 0) {
-        const data = JSON.parse(response.stdout)
-        if (data && data[0] && data[0].ip && data[0].ip !== '-') {
-          core.info(`Machine ${machine_name} has ip assigned ${data[0].ip}`)
-          break
-        }
+      const response = await client.getMachineStatus(machine_name)
+
+      if (response.ip_configured && response.ip_configured !== '-') {
+        core.info(`Machine ${machine_name} has ip assigned ${response.ip_configured}`)
+        break
       }
 
-      core.info(`Machine ${machine_name} does not have ip assigned, waiting 1s, exit code: ${response.exit_code}`)
 
-      core.info(`Waiting 1s for virtual machine to get network assigned`)
+      core.info(`Machine ${machine_name} does not have ip assigned, waiting 1s`)
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
 

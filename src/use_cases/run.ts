@@ -49,7 +49,12 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     }
 
     for (let i = 0; i < 100; i++) {
-      core.info(`Checking if virtual machine ${machine_name} is ready [${i}/100]`)
+      if (i > 0) {
+        core.info(`Checking if virtual machine ${machine_name} is ready [${i}/100]`)
+      } else {
+        core.info(`Checking if virtual machine ${machine_name} is ready`)
+      }
+
       const response = await client.ExecuteOnVm(machine_name, checkCommandRequest)
       if (response.exit_code === 0) {
         break
@@ -59,7 +64,12 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     }
 
     for (let i = 0; i < 100; i++) {
-      core.info(`Checking if virtual machine ${machine_name} has network [${i}/100]`)
+      if (i > 0) {
+        core.info(`Checking if virtual machine ${machine_name} has network [${i}/100]`)
+      } else {
+        core.info(`Checking if virtual machine ${machine_name} has network`)
+      }
+
       const response = await client.getMachineStatus(machine_name)
 
       if (response.ip_configured && response.ip_configured !== '-') {
@@ -73,17 +83,22 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
 
     let output = ''
     for (const line of lines) {
+      // Skip empty lines or commented lines
+      if (!line || line === '' || line === '\n') {
+        continue
+      }
+      // Skip commented lines
+      if (line.startsWith('#')) {
+        continue
+      }
+
       let max_attempts = Number(core.getInput('max_attempts')) || 1
       if (max_attempts > 1) {
-        core.info(`Setting max attempts to ${max_attempts}`)
+        core.debug(`Setting max attempts to ${max_attempts}`)
       }
       while (max_attempts > 0) {
         max_attempts--
         core.info(`Executing command on virtual machine: ${line}`)
-        // Skip empty lines or commented lines
-        if (!line || line === '' || line === '\n') {
-          continue
-        }
 
         const cloneRequest: ExecuteRequest = {
           command: line

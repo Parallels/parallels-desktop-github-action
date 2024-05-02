@@ -53,12 +53,17 @@ export async function run(telemetry: Telemetry): Promise<void> {
         core.setFailed(`Host is down: ${baseUrl}`)
         return
       }
-      const license = await devops.getPDLicense()
-      if (license.uuid !== '') {
-        telemetry.setUserId(license.uuid)
-      }
-      if (license.serial) {
-        telemetry.setLicense(license.serial)
+      if (is_orchestrator) {
+        telemetry.setUserId('orchestrator')
+        telemetry.setLicense('orchestrator')
+      } else {
+        const license = await devops.getPDLicense()
+        if (license.uuid !== '') {
+          telemetry.setUserId(license.uuid)
+        }
+        if (license.serial) {
+          telemetry.setLicense(license.serial)
+        }
       }
     }
 

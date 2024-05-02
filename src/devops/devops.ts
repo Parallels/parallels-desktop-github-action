@@ -185,7 +185,7 @@ export class DevOps {
 
   async setMachineAction(idOrName: string, action: 'start' | 'stop'): Promise<VirtualMachineStatus> {
     try {
-      const url = `${this.baseUrl}/v1/machines/${idOrName}`
+      const url = this.getUrl(`/machines/${idOrName}`, this.target)
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
       headers.push(authHeader)
@@ -213,7 +213,7 @@ export class DevOps {
         throw new Error('Invalid id or name')
       }
       const encodedUrl = encodeURIComponent(idOrName)
-      const url = `${this.baseUrl}/v1/machines/${encodedUrl}/execute`
+      const url = this.getUrl(`/machines/${encodedUrl}/execute`, this.target)
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
       headers.push(authHeader)

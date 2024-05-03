@@ -46,7 +46,7 @@ export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise
     core.setOutput('host', host)
 
     const startAfterCreate = core.getInput('start_after_op')
-    if (startAfterCreate === 'true') {
+    if (startAfterCreate === 'true' || response.current_state !== 'running') {
       core.info(`Starting virtual machine`)
       await client.setMachineAction(vmId, 'start')
       core.info(`Started virtual machine: ${vmId}`)

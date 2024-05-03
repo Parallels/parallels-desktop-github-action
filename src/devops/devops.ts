@@ -191,12 +191,24 @@ export class DevOps {
       headers.push(authHeader)
       let response: HttpResponse<VirtualMachineStatus>
       switch (action) {
-        case 'start':
-          response = await this.client.get<VirtualMachineStatus>(`${url}/start`, headers)
+        case 'start': {
+          const startUrl = `${url}/start`
+          if (this.target === 'orchestrator') {
+            response = await this.client.put<VirtualMachineStatus>(startUrl, null, headers)
+          } else {
+            response = await this.client.get<VirtualMachineStatus>(startUrl, headers)
+          }
           break
-        case 'stop':
-          response = await this.client.get<VirtualMachineStatus>(`${url}/stop`, headers)
+        }
+        case 'stop': {
+          const stopUrl = `${url}/stop`
+          if (this.target === 'orchestrator') {
+            response = await this.client.put<VirtualMachineStatus>(stopUrl, null, headers)
+          } else {
+            response = await this.client.get<VirtualMachineStatus>(stopUrl, headers)
+          }
           break
+        }
         default:
           throw new Error('Invalid action')
       }

@@ -30,7 +30,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
 
     core.info(`Checking the machine ${machine_name} status`)
     let machine = await client.getMachine(machine_name)
-    core.info(`Machine ${machine_name} status: ${JSON.stringify(machine)}`)
+    core.debug(`Machine ${machine_name} status: ${JSON.stringify(machine)}`)
     if (machine.State !== 'running') {
       for (let i = 0; i < 20; i++) {
         if (i > 0) {

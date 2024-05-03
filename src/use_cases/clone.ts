@@ -36,7 +36,7 @@ export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promis
     core.setOutput('vm_name', cloneRequest.clone_name)
 
     const startAfterCreate = core.getInput('start_after_op')
-    if (startAfterCreate === 'true') {
+    if (startAfterCreate === 'true' && response.status !== 'running') {
       core.info(`Starting virtual machine ${vmId}`)
       await client.setMachineAction(vmId, 'start')
       await new Promise(resolve => setTimeout(resolve, 3000))

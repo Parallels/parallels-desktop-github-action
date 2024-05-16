@@ -16,7 +16,7 @@ export class ImageHost {
   catalogId = ''
   version = ''
 
-  constructor() {}
+  constructor() { }
 
   parse(imageUrl: string) {
     this.raw = imageUrl
@@ -28,12 +28,10 @@ export class ImageHost {
       this.schema = schemaParts[0]
       imageUrl = schemaParts[1]
     }
-    const userParts = imageUrl.split('@')
-    if (userParts.length === 1) {
-      this.host = userParts[0]
-      imageUrl = userParts[0]
-    } else {
-      const user = userParts[0]
+
+    const lastAtSignIndex = imageUrl.lastIndexOf('@')
+    if (lastAtSignIndex !== -1) {
+      const user = imageUrl.slice(0, lastAtSignIndex - 1)
       const usernameParts = user.split(':')
       if (usernameParts.length === 1) {
         this.username = usernameParts[0]
@@ -41,7 +39,7 @@ export class ImageHost {
         this.username = usernameParts[0]
         this.password = usernameParts[1]
       }
-      imageUrl = userParts[1]
+      imageUrl = imageUrl.slice(lastAtSignIndex + 1, imageUrl.length)
     }
 
     imageUrl.endsWith('/') ? (imageUrl = imageUrl.slice(0, -1)) : imageUrl

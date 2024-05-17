@@ -28,20 +28,19 @@ export class ImageHost {
       this.schema = schemaParts[0]
       imageUrl = schemaParts[1]
     }
-    const userParts = imageUrl.split('@')
-    if (userParts.length === 1) {
-      this.host = userParts[0]
-      imageUrl = userParts[0]
-    } else {
-      const user = userParts[0]
-      const usernameParts = user.split(':')
-      if (usernameParts.length === 1) {
-        this.username = usernameParts[0]
-      } else if (usernameParts.length === 2) {
-        this.username = usernameParts[0]
-        this.password = usernameParts[1]
+
+    const lastAtSignIndex = imageUrl.lastIndexOf('@')
+    if (lastAtSignIndex !== -1) {
+      const user = imageUrl.slice(0, lastAtSignIndex)
+      const firstIndexOfColon = user.indexOf(':')
+      if (firstIndexOfColon === -1) {
+        this.username = user
+      } else {
+        this.username = user.slice(0, firstIndexOfColon)
+        this.password = user.slice(firstIndexOfColon + 1, user.length)
       }
-      imageUrl = userParts[1]
+
+      imageUrl = imageUrl.slice(lastAtSignIndex + 1, imageUrl.length)
     }
 
     imageUrl.endsWith('/') ? (imageUrl = imageUrl.slice(0, -1)) : imageUrl

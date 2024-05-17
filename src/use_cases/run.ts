@@ -29,12 +29,31 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     const lines = command.split('\n')
 
     core.info(`Checking the machine ${machine_name} status`)
-    const machine = await client.getMachine(machine_name)
+    let machine = await client.getMachine(machine_name)
+    core.debug(`Machine ${machine_name} status: ${JSON.stringify(machine)}`)
     if (machine.State !== 'running') {
-      core.setFailed(
-        `Error executing command on virtual machine ${machine_name}: the current status is not running but instead ${machine.State}`
-      )
-      return false
+      for (let i = 0; i < 20; i++) {
+        if (i > 0) {
+          core.info(`Trying to start ${machine_name} [${i}/20]`)
+        } else {
+          core.info(`Trying to start ${machine_name}`)
+        }
+
+        await client.setMachineAction(machine_name, 'start')
+        machine = await client.getMachine(machine_name)
+        if (machine.State === 'running') {
+          break
+        }
+        core.info(`Machine ${machine_name} is stated, waiting 1s, old status: ${machine.State}`)
+        await new Promise(resolve => setTimeout(resolve, 1000))
+      }
+
+      if (machine.State !== 'running') {
+        core.setFailed(
+          `Error executing command on virtual machine ${machine_name}: the current status is not running but instead ${machine.State}`
+        )
+        return false
+      }
     }
 
     // waiting for machine to be ready

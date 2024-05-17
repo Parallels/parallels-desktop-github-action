@@ -7,6 +7,34 @@ describe('ImageHost', () => {
     imageHost = new ImageHost()
   })
 
+  it('should parse the image URL correctly with strange password', () => {
+    const imageUrl = 'catalog://root:te@s:t@localhost:55670/arm/build agent template/latest'
+    imageHost.parse(imageUrl)
+
+    expect(imageHost.schema).toBe('catalog')
+    expect(imageHost.username).toBe('root')
+    expect(imageHost.password).toBe('te@s:t')
+    expect(imageHost.host).toBe('localhost')
+    expect(imageHost.port).toBe('55670')
+    expect(imageHost.catalogId).toBe('build agent template')
+    expect(imageHost.architecture).toBe('arm')
+    expect(imageHost.version).toBe('latest')
+  })
+
+  it('should parse the image URL correctly with strong password', () => {
+    const imageUrl = 'catalog://root:te@st@localhost:55670/arm/build agent template/latest'
+    imageHost.parse(imageUrl)
+
+    expect(imageHost.schema).toBe('catalog')
+    expect(imageHost.username).toBe('root')
+    expect(imageHost.password).toBe('te@st')
+    expect(imageHost.host).toBe('localhost')
+    expect(imageHost.port).toBe('55670')
+    expect(imageHost.catalogId).toBe('build agent template')
+    expect(imageHost.architecture).toBe('arm')
+    expect(imageHost.version).toBe('latest')
+  })
+
   it('should parse the image URL correctly', () => {
     const imageUrl = 'catalog://root:test@localhost:55670/arm/build agent template/latest'
     imageHost.parse(imageUrl)

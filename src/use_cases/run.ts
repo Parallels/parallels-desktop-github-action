@@ -4,21 +4,21 @@ import * as core from '@actions/core'
 import { ExecuteRequest } from '../devops/models/execute'
 
 export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
-  try {
-    const event: AmplitudeEvent = {
-      event: EVENT_RUN_USE_CASE,
-      properties: [
-        {
-          name: 'operation',
-          value: 'execute_virtual_machine'
-        },
-        {
-          name: 'host',
-          value: client.baseUrl
-        }
-      ]
-    }
+  const event: AmplitudeEvent = {
+    event: EVENT_RUN_USE_CASE,
+    properties: [
+      {
+        name: 'operation',
+        value: 'execute_virtual_machine'
+      },
+      {
+        name: 'host',
+        value: client.baseUrl
+      }
+    ]
+  }
 
+  try {
     const machine_name = core.getInput('machine_name')
     core.info(`Execution command on virtual machine ${machine_name}`)
     const command = core.getInput('run')
@@ -154,11 +154,15 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
     }
 
     core.setOutput('stdout', output)
-
     telemetry.track(event)
     return true
   } catch (error) {
     core.setFailed(`Error executing command virtual machine: ${error}`)
+    event.properties?.push({
+      name: 'error',
+      value: `${error}`
+    })
+    telemetry.track(event)
     return Promise.reject(error)
   }
 }

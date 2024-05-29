@@ -3,21 +3,21 @@ import DevOps from '../devops/devops'
 import * as core from '@actions/core'
 
 export async function DeleteUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
-  try {
-    const event: AmplitudeEvent = {
-      event: EVENT_DELETE_USE_CASE,
-      properties: [
-        {
-          name: 'operation',
-          value: 'delete_virtual_machine'
-        },
-        {
-          name: 'host',
-          value: client.baseUrl
-        }
-      ]
-    }
+  const event: AmplitudeEvent = {
+    event: EVENT_DELETE_USE_CASE,
+    properties: [
+      {
+        name: 'operation',
+        value: 'delete_virtual_machine'
+      },
+      {
+        name: 'host',
+        value: client.baseUrl
+      }
+    ]
+  }
 
+  try {
     const machine_name = core.getInput('machine_name')
     core.info(`Deleting virtual machine ${machine_name}`)
 
@@ -34,6 +34,11 @@ export async function DeleteUseCase(telemetry: Telemetry, client: DevOps): Promi
     return true
   } catch (error) {
     core.setFailed(`Error deleting virtual machine: ${error}`)
+    event.properties?.push({
+      name: 'error',
+      value: `${error}`
+    })
+    telemetry.track(event)
     return Promise.reject(error)
   }
 }

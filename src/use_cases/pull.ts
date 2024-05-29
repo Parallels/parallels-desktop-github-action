@@ -6,21 +6,21 @@ import { v4 as uuidv4 } from 'uuid'
 import { CreateVmRequest, CreateVmRequestSpecs } from '../devops/models/create'
 
 export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
-  try {
-    const event: AmplitudeEvent = {
-      event: EVENT_PULL_USE_CASE,
-      properties: [
-        {
-          name: 'operation',
-          value: 'pull_virtual_machine'
-        },
-        {
-          name: 'host',
-          value: client.baseUrl
-        }
-      ]
-    }
+  const event: AmplitudeEvent = {
+    event: EVENT_PULL_USE_CASE,
+    properties: [
+      {
+        name: 'operation',
+        value: 'pull_virtual_machine'
+      },
+      {
+        name: 'host',
+        value: client.baseUrl
+      }
+    ]
+  }
 
+  try {
     core.info(`Creating a virtual machine`)
     let vmId = ''
     let host = ''
@@ -56,6 +56,11 @@ export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise
     return true
   } catch (error) {
     core.setFailed(`Error pulling virtual machine: ${error}`)
+    event.properties?.push({
+      name: 'error',
+      value: `${error}`
+    })
+    telemetry.track(event)
     return Promise.reject(error)
   }
 }

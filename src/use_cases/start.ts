@@ -3,21 +3,21 @@ import DevOps from '../devops/devops'
 import * as core from '@actions/core'
 
 export async function StartUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
-  try {
-    const event: AmplitudeEvent = {
-      event: EVENT_START_USE_CASE,
-      properties: [
-        {
-          name: 'operation',
-          value: 'start_virtual_machine'
-        },
-        {
-          name: 'host',
-          value: client.baseUrl
-        }
-      ]
-    }
+  const event: AmplitudeEvent = {
+    event: EVENT_START_USE_CASE,
+    properties: [
+      {
+        name: 'operation',
+        value: 'start_virtual_machine'
+      },
+      {
+        name: 'host',
+        value: client.baseUrl
+      }
+    ]
+  }
 
+  try {
     const machine_name = core.getInput('machine_name')
     core.info(`Starting virtual machine ${machine_name}`)
 
@@ -39,6 +39,11 @@ export async function StartUseCase(telemetry: Telemetry, client: DevOps): Promis
     return true
   } catch (error) {
     core.setFailed(`Error starting virtual machine: ${error}`)
+    event.properties?.push({
+      name: 'error',
+      value: `${error}`
+    })
+    telemetry.track(event)
     return Promise.reject(error)
   }
 }

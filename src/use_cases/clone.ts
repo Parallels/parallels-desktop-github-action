@@ -5,21 +5,20 @@ import { v4 as uuidv4 } from 'uuid'
 import { CloneRequest } from '../devops/models/clone'
 
 export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
+  const event: AmplitudeEvent = {
+    event: EVENT_CLONE_USE_CASE,
+    properties: [
+      {
+        name: 'operation',
+        value: 'clone_virtual_machine'
+      },
+      {
+        name: 'host',
+        value: client.baseUrl
+      }
+    ]
+  }
   try {
-    const event: AmplitudeEvent = {
-      event: EVENT_CLONE_USE_CASE,
-      properties: [
-        {
-          name: 'operation',
-          value: 'clone_virtual_machine'
-        },
-        {
-          name: 'host',
-          value: client.baseUrl
-        }
-      ]
-    }
-
     let vmId = ''
     const base_vm = core.getInput('base_vm')
     core.info(`Cloning virtual machine ${base_vm}`)
@@ -47,6 +46,11 @@ export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promis
     return true
   } catch (error) {
     core.setFailed(`Error cloning virtual machine: ${error}`)
+    event.properties?.push({
+      name: 'error',
+      value: `${error}`
+    })
+    telemetry.track(event)
     return Promise.reject(error)
   }
 }

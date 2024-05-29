@@ -43,11 +43,11 @@ export class Telemetry {
       this.amplitude_api_key = AMPLITUDE_API_KEY
     }
 
-    if (this.amplitude_api_key) {
+    if (!this.amplitude_api_key) {
       this.enabled = false
     }
 
-    await amplitude.init(AMPLITUDE_API_KEY, {
+    await amplitude.init(this.amplitude_api_key, {
       flushIntervalMillis: 100,
       logLevel: amplitude.Types.LogLevel.Error
     }).promise
@@ -61,18 +61,23 @@ export class Telemetry {
     this.license = license
   }
 
-  track(event: AmplitudeEvent) {
+  async track(event: AmplitudeEvent) {
     if (!this.enabled) {
       return
     }
+    event.properties = event.properties || []
 
     if (this.license) {
-      event.properties = event.properties || []
       event.properties.push({
         name: 'license',
         value: this.license
       })
     }
+
+    event.properties.push({
+      name: 'source',
+      value: 'github-action'
+    })
     const properties: Record<string, string> = {}
     for (const property of event.properties ?? []) {
       properties[property.name] = property.value

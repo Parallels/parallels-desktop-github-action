@@ -5,7 +5,7 @@ describe('Telemetry', () => {
   let telemetry: Telemetry
 
   beforeEach(() => {
-    telemetry = new Telemetry()
+    telemetry = new Telemetry(true)
   })
 
   it('should set the user ID correctly', () => {

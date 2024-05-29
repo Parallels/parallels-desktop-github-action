@@ -32,8 +32,11 @@ export class Telemetry {
   private enabled: boolean = true
   private amplitude_api_key: string = ''
 
-  constructor() {
+  constructor(test: boolean = false) {
     this.init()
+    if (test) {
+      this.enabled = true
+    }
   }
 
   async init() {
@@ -74,10 +77,6 @@ export class Telemetry {
       })
     }
 
-    event.properties.push({
-      name: 'source',
-      value: 'github-action'
-    })
     const properties: Record<string, string> = {}
     for (const property of event.properties ?? []) {
       properties[property.name] = property.value

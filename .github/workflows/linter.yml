@@ -43,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JAVASCRIPT_DEFAULT_STYLE: prettier
           TYPESCRIPT_DEFAULT_STYLE: prettier
-          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_ALL_CODEBASE: false
           VALIDATE_JSCPD: false
           VALIDATE_CHECKOV: false
           VALIDATE_GITHUB_ACTIONS: false

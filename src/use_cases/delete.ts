@@ -39,6 +39,6 @@ export async function DeleteUseCase(telemetry: Telemetry, client: DevOps): Promi
       value: `${error}`
     })
     telemetry.track(event)
-    return Promise.reject(error)
+    return await Promise.reject(error)
   }
 }

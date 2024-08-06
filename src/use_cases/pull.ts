@@ -21,7 +21,7 @@ export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise
   }
 
   try {
-    core.info(`Creating a virtual machine`)
+    core.info('Creating a virtual machine')
     let vmId = ''
     let host = ''
     const imageHost = new ImageHost()
@@ -47,7 +47,7 @@ export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise
 
     const startAfterCreate = core.getInput('start_after_op')
     if (startAfterCreate === 'true' && response.current_state !== 'running') {
-      core.info(`Starting virtual machine`)
+      core.info('Starting virtual machine')
       await client.setMachineAction(vmId, 'start')
       core.info(`Started virtual machine: ${vmId}`)
     }
@@ -61,7 +61,7 @@ export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise
       value: `${error}`
     })
     telemetry.track(event)
-    return Promise.reject(error)
+    return await Promise.reject(error)
   }
 }
 

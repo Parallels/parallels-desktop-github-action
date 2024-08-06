@@ -16,7 +16,9 @@ export class ImageHost {
   catalogId = ''
   version = ''
 
-  constructor() {}
+  constructor() {
+    // Empty constructor
+  }
 
   parse(imageUrl: string) {
     this.raw = imageUrl

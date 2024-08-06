@@ -32,6 +32,7 @@ parserOptions:
 
 plugins:
   - jest
+  - "@typescript-eslint/eslint-plugin"
 
 extends:
   - eslint:recommended
@@ -41,16 +42,16 @@ extends:
   - plugin:@typescript-eslint/recommended
 
 rules:
-  "camelcase": "off"
-  "eslint-comments/no-use": "off"
-  "eslint-comments/no-unused-disable": "off"
-  "i18n-text/no-en": "off"
-  "import/no-commonjs": "off"
-  "import/no-namespace": "off"
-  "no-console": "off"
-  "no-unused-vars": "off"
-  "prettier/prettier": "error"
-  "semi": "off"
-  "@typescript-eslint/space-before-function-paren": "off"
-  "no-shadow": "off"
-  "@typescript-eslint/restrict-template-expressions": "off"
+  "camelcase": 0
+  "eslint-comments/no-use": 0
+  "eslint-comments/no-unused-disable": 0
+  "i18n-text/no-en": 0
+  "import/no-commonjs": 0
+  "import/no-namespace": 0
+  "no-console": 0
+  "no-unused-vars": 0
+  "prettier/prettier": 2
+  "semi": 0
+  "@typescript-eslint/space-before-function-paren": 0
+  "no-shadow": 0
+  "@typescript-eslint/restrict-template-expressions": 0

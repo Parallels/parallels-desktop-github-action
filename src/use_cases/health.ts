@@ -19,5 +19,5 @@ export async function HealthUseCase(telemetry: Telemetry, client: DevOps): Promi
   }
 
   telemetry.track(event)
-  return response
+  return await response
 }

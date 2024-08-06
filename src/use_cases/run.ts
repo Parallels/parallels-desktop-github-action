@@ -162,7 +162,7 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       name: 'error',
       value: `${error}`
     })
-    telemetry.track(event)
-    return Promise.reject(error)
+    await telemetry.track(event)
+    return await Promise.reject(error)
   }
 }

@@ -4,7 +4,7 @@
 import { Telemetry } from './telemetry/telemetry'
 import { run } from './main'
 
-console.log(`Initializing Amplitude...`)
+console.log('Initializing Amplitude...')
 const telemetry = new Telemetry()
 telemetry.init()
 

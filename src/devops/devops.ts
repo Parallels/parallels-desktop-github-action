@@ -9,15 +9,15 @@ import { PullCatalogRequest, PullCatalogResponse } from './models/catalog'
 import { CloneRequest, CloneResponse } from './models/clone'
 import { VirtualMachineStatus } from './models/status'
 import { ExecuteRequest, ExecuteResponse } from './models/execute'
-import { CreateVmRequest as CreateVmRequest, CreateVMResponse } from './models/create'
+import { CreateVmRequest, CreateVMResponse } from './models/create'
 
 export class DevOps {
   baseUrl: string
-  private client: HttpClient
+  private readonly client: HttpClient
   private token: string | undefined = undefined
   private tokenExpiry: number = 0
   private apiKey: string | undefined = undefined
-  private target: 'host' | 'orchestrator' | 'none' = 'host'
+  private readonly target: 'host' | 'orchestrator' | 'none' = 'host'
 
   constructor(baseUrl: string, target: 'host' | 'orchestrator' | 'none') {
     this.baseUrl = baseUrl
@@ -63,11 +63,11 @@ export class DevOps {
       const url = this.getUrl('/health/system?full=true', 'host')
       const response = await this.client.get<HealthCheckResponse>(url)
       if (response.StatusCode !== 200) {
-        return response.Data as HealthCheckResponse
+        return response.Data
       }
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -80,7 +80,7 @@ export class DevOps {
       const response = await this.client.get<ParallelsDesktopLicense>(url, headers)
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -97,7 +97,7 @@ export class DevOps {
       const response = await this.client.put<CloneResponse>(url, request, headers)
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -110,7 +110,7 @@ export class DevOps {
       const response = await this.client.put<PullCatalogResponse>(url, request, headers)
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -123,7 +123,7 @@ export class DevOps {
       const response = await this.client.post<CreateVMResponse>(url, request, headers)
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -138,9 +138,9 @@ export class DevOps {
       const authHeader = await this.getAuthenticationHeader()
       headers.push(authHeader)
       await this.client.delete(url, headers)
-      return true
+      return await Promise.resolve(true)
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -153,7 +153,7 @@ export class DevOps {
       const response = await this.client.get<VirtualMachine[]>(url, headers)
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -166,7 +166,7 @@ export class DevOps {
       const response = await this.client.get<VirtualMachine>(url, headers)
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -179,7 +179,7 @@ export class DevOps {
       const response = await this.client.get<VirtualMachineStatus>(url, headers)
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -215,7 +215,7 @@ export class DevOps {
 
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -232,7 +232,7 @@ export class DevOps {
       const response = await this.client.put<ExecuteResponse>(url, request, headers)
       return response.Data
     } catch (error) {
-      return Promise.reject(error)
+      return await Promise.reject(error)
     }
   }
 
@@ -285,7 +285,7 @@ export class DevOps {
         this.tokenExpiry = response.Data.expires_at ?? 0
         return response.Data
       } catch (error) {
-        return Promise.reject(error)
+        return await Promise.reject(error)
       }
     }
   }

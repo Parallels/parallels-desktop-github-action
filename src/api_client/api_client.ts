@@ -20,7 +20,7 @@ enum HttpMethod {
 }
 
 class HttpClient {
-  private client: axios.AxiosInstance
+  private readonly client: axios.AxiosInstance
 
   constructor() {
     this.client = axios.create({
@@ -29,19 +29,19 @@ class HttpClient {
   }
 
   async get<T>(url: string, headers?: HttpHeader[]): Promise<HttpResponse<T>> {
-    return this.call<T>(HttpMethod.GET, url, undefined, headers)
+    return await this.call<T>(HttpMethod.GET, url, undefined, headers)
   }
 
   async post<T>(url: string, data: unknown, headers?: HttpHeader[]): Promise<HttpResponse<T>> {
-    return this.call<T>(HttpMethod.POST, url, data, headers)
+    return await this.call<T>(HttpMethod.POST, url, data, headers)
   }
 
   async put<T>(url: string, data: unknown, headers?: HttpHeader[]): Promise<HttpResponse<T>> {
-    return this.call<T>(HttpMethod.PUT, url, data, headers)
+    return await this.call<T>(HttpMethod.PUT, url, data, headers)
   }
 
   async delete<T>(url: string, headers?: HttpHeader[]): Promise<HttpResponse<T>> {
-    return this.call<T>(HttpMethod.DELETE, url, undefined, headers)
+    return await this.call<T>(HttpMethod.DELETE, url, undefined, headers)
   }
 
   private async call<T>(
@@ -51,7 +51,7 @@ class HttpClient {
     headers?: HttpHeader[]
   ): Promise<HttpResponse<T>> {
     const config: AxiosRequestConfig = {}
-    if (headers) {
+    if (headers != null) {
       const requestHeaders: RawAxiosRequestHeaders = {}
       for (const header of headers) {
         requestHeaders[header.name] = header.value
@@ -88,15 +88,15 @@ class HttpClient {
         message: 'Unknown error',
         code: 500,
         clientErrorMessage: axiosError.message,
-        clientErrorCode: axiosError.code || 'UNKNOWN_ERROR_CODE'
+        clientErrorCode: axiosError.code ?? 'UNKNOWN_ERROR_CODE'
       }
-      if (axiosError?.response?.data) {
+      if (axiosError?.response?.data != null) {
         const apiError = axiosError.response.data as APIError
         apiErrorResult.message = apiError.message || 'Unknown error'
-        apiErrorResult.code = apiError.code || 500
+        apiErrorResult.code = apiError.code ?? 500
       }
 
-      return Promise.reject(apiErrorResult)
+      return await Promise.reject(apiErrorResult)
     }
   }
 }

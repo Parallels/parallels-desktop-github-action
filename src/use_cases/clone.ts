@@ -51,6 +51,6 @@ export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promis
       value: `${error}`
     })
     telemetry.track(event)
-    return Promise.reject(error)
+    return await Promise.reject(error)
   }
 }

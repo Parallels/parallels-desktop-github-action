@@ -18,24 +18,24 @@ export async function StartUseCase(telemetry: Telemetry, client: DevOps): Promis
   }
 
   try {
-    const machine_name = core.getInput('machine_name')
-    core.info(`Starting virtual machine ${machine_name}`)
+    const MACHINE_NAME = core.getInput('machine_name')
+    core.info(`Starting virtual machine ${MACHINE_NAME}`)
 
-    const machineStatus = await client.getMachineStatus(machine_name)
+    const machineStatus = await client.getMachineStatus(MACHINE_NAME)
     if (machineStatus.status === 'running') {
       return true
     }
 
     if (machineStatus.status === 'stopped') {
-      await client.setMachineAction(machine_name, 'start')
+      await client.setMachineAction(MACHINE_NAME, 'start')
     } else {
       core.setFailed(
-        `Error starting virtual machine ${machine_name}: the current status is not stopped but instead ${machineStatus.status}`
+        `Error starting virtual machine ${MACHINE_NAME}: the current status is not stopped but instead ${machineStatus.status}`
       )
       return false
     }
 
-    telemetry.track(event)
+    await telemetry.track(event)
     return true
   } catch (error) {
     core.setFailed(`Error starting virtual machine: ${error}`)
@@ -43,7 +43,7 @@ export async function StartUseCase(telemetry: Telemetry, client: DevOps): Promis
       name: 'error',
       value: `${error}`
     })
-    telemetry.track(event)
-    return Promise.reject(error)
+    await telemetry.track(event)
+    return await Promise.reject(error)
   }
 }

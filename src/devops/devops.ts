@@ -54,6 +54,7 @@ export class DevOps {
       }
       return response.Data.status === 'OK' ? 'up' : 'down'
     } catch (error) {
+      console.log(error)
       return 'down'
     }
   }

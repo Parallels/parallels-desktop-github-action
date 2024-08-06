@@ -16,10 +16,6 @@ export class ImageHost {
   catalogId = ''
   version = ''
 
-  constructor() {
-    // Empty constructor
-  }
-
   parse(imageUrl: string) {
     this.raw = imageUrl
     const schemaParts = imageUrl.split('://')
@@ -45,7 +41,7 @@ export class ImageHost {
       imageUrl = imageUrl.slice(lastAtSignIndex + 1, imageUrl.length)
     }
 
-    imageUrl.endsWith('/') ? (imageUrl = imageUrl.slice(0, -1)) : imageUrl
+    imageUrl = imageUrl.endsWith('/') ? (imageUrl = imageUrl.slice(0, -1)) : imageUrl
 
     const hostParts = imageUrl.split('/')
     this.host = hostParts[0]

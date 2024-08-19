@@ -4,8 +4,9 @@
 [![Lint Codebase](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/linter.yml/badge.svg)](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/linter.yml)
 [![CI](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/ci.yml/badge.svg)](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/ci.yml)
 
-This action allows you to run Parallels Desktop virtual machines in your GitHub Actions workflows. You can start, stop,
-and run commands in a VM, as well as clone, create, and delete VMs.
+This action allows you to run Parallels Desktop virtual machines in your GitHub
+Actions workflows. You can start, stop, and run commands in a VM, as well as clone,
+create, and delete VMs.
 
 ## Usage
 

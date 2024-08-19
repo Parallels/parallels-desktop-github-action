@@ -8,5 +8,5 @@
 
 ## Reporting a Vulnerability
 
-to report a vulnerability please contact [cjlapao@gmail.com](cjlapao@gmail.com) or if you can please raise a pr with the
-fix for approval
+to report a vulnerability please contact [support@parallels.com](support@parallels.com)
+or if you can please raise a pr with the fix for approval

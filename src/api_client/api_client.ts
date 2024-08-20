@@ -1,5 +1,10 @@
 import axios from 'axios'
-import type { AxiosResponse, AxiosRequestConfig, RawAxiosRequestHeaders, AxiosError } from 'axios'
+import type {
+  AxiosResponse,
+  AxiosRequestConfig,
+  RawAxiosRequestHeaders,
+  AxiosError
+} from 'axios'
 import { APIError } from '../devops/models/api_error'
 
 export interface HttpHeader {
@@ -32,15 +37,26 @@ class HttpClient {
     return await this.call<T>(HttpMethod.GET, url, undefined, headers)
   }
 
-  async post<T>(url: string, data: unknown, headers?: HttpHeader[]): Promise<HttpResponse<T>> {
+  async post<T>(
+    url: string,
+    data: unknown,
+    headers?: HttpHeader[]
+  ): Promise<HttpResponse<T>> {
     return await this.call<T>(HttpMethod.POST, url, data, headers)
   }
 
-  async put<T>(url: string, data: unknown, headers?: HttpHeader[]): Promise<HttpResponse<T>> {
+  async put<T>(
+    url: string,
+    data: unknown,
+    headers?: HttpHeader[]
+  ): Promise<HttpResponse<T>> {
     return await this.call<T>(HttpMethod.PUT, url, data, headers)
   }
 
-  async delete<T>(url: string, headers?: HttpHeader[]): Promise<HttpResponse<T>> {
+  async delete<T>(
+    url: string,
+    headers?: HttpHeader[]
+  ): Promise<HttpResponse<T>> {
     return await this.call<T>(HttpMethod.DELETE, url, undefined, headers)
   }
 

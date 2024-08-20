@@ -9,21 +9,21 @@ globals:
   SharedArrayBuffer: readonly
 
 ignorePatterns:
-  - "!.*"
-  - "**/node_modules/.*"
-  - "**/dist/.*"
-  - "**/coverage/.*"
-  - "**/__tests__/.*"
-  - "*.json"
+  - '!.*'
+  - '**/node_modules/.*'
+  - '**/dist/.*'
+  - '**/coverage/.*'
+  - '**/__tests__/.*'
+  - '*.json'
   - /src/index.ts
 
-parser: "@typescript-eslint/parser"
+parser: '@typescript-eslint/parser'
 
 parserOptions:
   ecmaVersion: 2023
   sourceType: module
   requireConfigFile: false
-  project: "tsconfig.eslint.json"
+  project: 'tsconfig.eslint.json'
   babelOptions:
     babelrc: false
     configFile: false
@@ -32,7 +32,7 @@ parserOptions:
 
 plugins:
   - jest
-  - "@typescript-eslint/eslint-plugin"
+  - '@typescript-eslint/eslint-plugin'
 
 extends:
   - eslint:recommended
@@ -42,16 +42,16 @@ extends:
   - plugin:@typescript-eslint/recommended
 
 rules:
-  "camelcase": 0
-  "eslint-comments/no-use": 0
-  "eslint-comments/no-unused-disable": 0
-  "i18n-text/no-en": 0
-  "import/no-commonjs": 0
-  "import/no-namespace": 0
-  "no-console": 0
-  "no-unused-vars": 0
-  "prettier/prettier": 2
-  "semi": 0
-  "@typescript-eslint/space-before-function-paren": 0
-  "no-shadow": 0
-  "@typescript-eslint/restrict-template-expressions": 0
+  'camelcase': 0
+  'eslint-comments/no-use': 0
+  'eslint-comments/no-unused-disable': 0
+  'i18n-text/no-en': 0
+  'import/no-commonjs': 0
+  'import/no-namespace': 0
+  'no-console': 0
+  'no-unused-vars': 0
+  'prettier/prettier': 2
+  'semi': 0
+  '@typescript-eslint/space-before-function-paren': 0
+  'no-shadow': 0
+  '@typescript-eslint/restrict-template-expressions': 0

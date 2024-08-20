@@ -8,7 +8,8 @@ describe('ImageHost', () => {
   })
 
   it('should parse the image URL correctly with strange password', () => {
-    const imageUrl = 'catalog://root:te@s:t@localhost:55670/arm/build agent template/latest'
+    const imageUrl =
+      'catalog://root:te@s:t@localhost:55670/arm/build agent template/latest'
     imageHost.parse(imageUrl)
 
     expect(imageHost.schema).toBe('catalog')
@@ -22,7 +23,8 @@ describe('ImageHost', () => {
   })
 
   it('should parse the image URL correctly with strong password', () => {
-    const imageUrl = 'catalog://root:te@st@localhost:55670/arm/build agent template/latest'
+    const imageUrl =
+      'catalog://root:te@st@localhost:55670/arm/build agent template/latest'
     imageHost.parse(imageUrl)
 
     expect(imageHost.schema).toBe('catalog')
@@ -36,7 +38,8 @@ describe('ImageHost', () => {
   })
 
   it('should parse the image URL correctly', () => {
-    const imageUrl = 'catalog://root:test@localhost:55670/arm/build agent template/latest'
+    const imageUrl =
+      'catalog://root:test@localhost:55670/arm/build agent template/latest'
     imageHost.parse(imageUrl)
 
     expect(imageHost.schema).toBe('catalog')
@@ -50,7 +53,8 @@ describe('ImageHost', () => {
   })
 
   it('should parse the image URL correctly detecting architecture and version', () => {
-    const imageUrl = 'catalog://root:test@localhost:55670/arm/build agent template'
+    const imageUrl =
+      'catalog://root:test@localhost:55670/arm/build agent template'
     imageHost.parse(imageUrl)
 
     expect(imageHost.schema).toBe('catalog')
@@ -64,7 +68,8 @@ describe('ImageHost', () => {
   })
 
   it('should parse the image URL correctly without architecture', () => {
-    const imageUrl = 'catalog://root:test@localhost:55670/build agent template/latest'
+    const imageUrl =
+      'catalog://root:test@localhost:55670/build agent template/latest'
     imageHost.parse(imageUrl)
 
     expect(imageHost.schema).toBe('catalog')
@@ -78,7 +83,8 @@ describe('ImageHost', () => {
   })
 
   it('should parse the image URL correctly without host port', () => {
-    const imageUrl = 'catalog://root:test@example.com/build agent template/latest'
+    const imageUrl =
+      'catalog://root:test@example.com/build agent template/latest'
     imageHost.parse(imageUrl)
 
     expect(imageHost.schema).toBe('catalog')
@@ -133,7 +139,8 @@ describe('ImageHost', () => {
   })
 
   it('should parse the image URL correctly with just id and version', () => {
-    const imageUrl = 'catalog://root:test@localhost:55670/build agent template/v1'
+    const imageUrl =
+      'catalog://root:test@localhost:55670/build agent template/v1'
     imageHost.parse(imageUrl)
 
     expect(imageHost.schema).toBe('catalog')

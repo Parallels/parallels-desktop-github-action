@@ -1,10 +1,17 @@
-import { AmplitudeEvent, EVENT_CLONE_USE_CASE, Telemetry } from '../telemetry/telemetry'
+import {
+  AmplitudeEvent,
+  EVENT_CLONE_USE_CASE,
+  Telemetry
+} from '../telemetry/telemetry'
 import DevOps from '../devops/devops'
 import * as core from '@actions/core'
 import { v4 as uuidv4 } from 'uuid'
 import { CloneRequest } from '../devops/models/clone'
 
-export async function CloneUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
+export async function CloneUseCase(
+  telemetry: Telemetry,
+  client: DevOps
+): Promise<boolean> {
   const event: AmplitudeEvent = {
     event: EVENT_CLONE_USE_CASE,
     properties: [

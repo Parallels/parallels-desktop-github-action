@@ -1,8 +1,15 @@
-import { AmplitudeEvent, EVENT_DELETE_USE_CASE, Telemetry } from '../telemetry/telemetry'
+import {
+  AmplitudeEvent,
+  EVENT_DELETE_USE_CASE,
+  Telemetry
+} from '../telemetry/telemetry'
 import DevOps from '../devops/devops'
 import * as core from '@actions/core'
 
-export async function DeleteUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
+export async function DeleteUseCase(
+  telemetry: Telemetry,
+  client: DevOps
+): Promise<boolean> {
   const event: AmplitudeEvent = {
     event: EVENT_DELETE_USE_CASE,
     properties: [

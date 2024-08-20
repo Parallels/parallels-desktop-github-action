@@ -20,7 +20,9 @@ permissions:
 
 jobs:
   check-dist:
-    if: github.event_name == 'pull_request' && !contains(github.head_ref, 'release/')
+    if:
+      github.event_name == 'pull_request' && !contains(github.head_ref,
+      'release/')
     name: Check dist directory
     runs-on: ubuntu-latest
 

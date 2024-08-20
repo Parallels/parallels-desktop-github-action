@@ -1,11 +1,18 @@
-import { AmplitudeEvent, EVENT_CREATE_USE_CASE as EVENT_PULL_USE_CASE, Telemetry } from '../telemetry/telemetry'
+import {
+  AmplitudeEvent,
+  EVENT_CREATE_USE_CASE as EVENT_PULL_USE_CASE,
+  Telemetry
+} from '../telemetry/telemetry'
 import DevOps from '../devops/devops'
 import * as core from '@actions/core'
 import ImageHost from '../image_host'
 import { v4 as uuidv4 } from 'uuid'
 import { CreateVmRequest, CreateVmRequestSpecs } from '../devops/models/create'
 
-export async function PullUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
+export async function PullUseCase(
+  telemetry: Telemetry,
+  client: DevOps
+): Promise<boolean> {
   const event: AmplitudeEvent = {
     event: EVENT_PULL_USE_CASE,
     properties: [

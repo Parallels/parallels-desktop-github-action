@@ -30,7 +30,9 @@ export async function run(telemetry: Telemetry): Promise<void> {
       schema = 'http'
     }
     if (orchestrator_url && host_url) {
-      core.warning('Both orchestrator_url and host_url are set. Using orchestrator_url')
+      core.warning(
+        'Both orchestrator_url and host_url are set. Using orchestrator_url'
+      )
     }
     if (host_url) {
       is_orchestrator = false
@@ -44,7 +46,10 @@ export async function run(telemetry: Telemetry): Promise<void> {
 
     // creating the devops client
     const baseUrl = `${schema}://${url}/api`
-    const devops = new DevOps(baseUrl, is_orchestrator ? 'orchestrator' : 'host')
+    const devops = new DevOps(
+      baseUrl,
+      is_orchestrator ? 'orchestrator' : 'host'
+    )
 
     if (operation !== 'test') {
       // checking if the host is alive and running

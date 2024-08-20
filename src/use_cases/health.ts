@@ -1,8 +1,15 @@
-import { AmplitudeEvent, EVENT_HEALTH_USE_CASE, Telemetry } from '../telemetry/telemetry'
+import {
+  AmplitudeEvent,
+  EVENT_HEALTH_USE_CASE,
+  Telemetry
+} from '../telemetry/telemetry'
 import DevOps from '../devops/devops'
 import { HealthCheck } from '../devops/models/health_check'
 
-export async function HealthUseCase(telemetry: Telemetry, client: DevOps): Promise<HealthCheck> {
+export async function HealthUseCase(
+  telemetry: Telemetry,
+  client: DevOps
+): Promise<HealthCheck> {
   const response = client.getHealthCheck()
   const event: AmplitudeEvent = {
     event: EVENT_HEALTH_USE_CASE,

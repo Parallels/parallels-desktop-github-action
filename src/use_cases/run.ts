@@ -1,9 +1,16 @@
-import { AmplitudeEvent, EVENT_RUN_USE_CASE, Telemetry } from '../telemetry/telemetry'
+import {
+  AmplitudeEvent,
+  EVENT_RUN_USE_CASE,
+  Telemetry
+} from '../telemetry/telemetry'
 import DevOps from '../devops/devops'
 import * as core from '@actions/core'
 import { ExecuteRequest } from '../devops/models/execute'
 
-export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<boolean> {
+export async function RunUseCase(
+  telemetry: Telemetry,
+  client: DevOps
+): Promise<boolean> {
   const event: AmplitudeEvent = {
     event: EVENT_RUN_USE_CASE,
     properties: [
@@ -44,7 +51,9 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
         if (machine.State === 'running') {
           break
         }
-        core.info(`Machine ${machine_name} is stated, waiting 1s, old status: ${machine.State}`)
+        core.info(
+          `Machine ${machine_name} is stated, waiting 1s, old status: ${machine.State}`
+        )
         await new Promise(resolve => setTimeout(resolve, 1000))
       }
 
@@ -69,22 +78,31 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
 
     for (let i = 0; i < 100; i++) {
       if (i > 0) {
-        core.info(`Checking if virtual machine ${machine_name} is ready [${i}/100]`)
+        core.info(
+          `Checking if virtual machine ${machine_name} is ready [${i}/100]`
+        )
       } else {
         core.info(`Checking if virtual machine ${machine_name} is ready`)
       }
 
-      const response = await client.ExecuteOnVm(machine_name, checkCommandRequest)
+      const response = await client.ExecuteOnVm(
+        machine_name,
+        checkCommandRequest
+      )
       if (response.exit_code === 0) {
         break
       }
-      core.info(`Machine ${machine_name} is not ready yet, waiting 1s, exit code: ${response.exit_code}`)
+      core.info(
+        `Machine ${machine_name} is not ready yet, waiting 1s, exit code: ${response.exit_code}`
+      )
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
 
     for (let i = 0; i < 100; i++) {
       if (i > 0) {
-        core.info(`Checking if virtual machine ${machine_name} has network [${i}/100]`)
+        core.info(
+          `Checking if virtual machine ${machine_name} has network [${i}/100]`
+        )
       } else {
         core.info(`Checking if virtual machine ${machine_name} has network`)
       }
@@ -92,7 +110,9 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
       const response = await client.getMachineStatus(machine_name)
 
       if (response.ip_configured && response.ip_configured !== '-') {
-        core.info(`Machine ${machine_name} has ip assigned ${response.ip_configured}`)
+        core.info(
+          `Machine ${machine_name} has ip assigned ${response.ip_configured}`
+        )
         break
       }
 
@@ -138,7 +158,9 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
             )
             return false
           } else {
-            core.info(`Retrying command execution on virtual machine: ${line} [${max_attempts} attempts left]`)
+            core.info(
+              `Retrying command execution on virtual machine: ${line} [${max_attempts} attempts left]`
+            )
           }
         } else {
           max_attempts = 0
@@ -147,8 +169,12 @@ export async function RunUseCase(telemetry: Telemetry, client: DevOps): Promise<
 
         const timeoutSeconds = Number(core.getInput('timeout_seconds')) || 0
         if (timeoutSeconds > 0 && max_attempts > 0) {
-          core.info(`Waiting ${timeoutSeconds} seconds before executing the next command`)
-          await new Promise(resolve => setTimeout(resolve, timeoutSeconds * 1000))
+          core.info(
+            `Waiting ${timeoutSeconds} seconds before executing the next command`
+          )
+          await new Promise(resolve =>
+            setTimeout(resolve, timeoutSeconds * 1000)
+          )
         }
       }
     }

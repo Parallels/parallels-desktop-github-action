@@ -78,14 +78,20 @@ export class DevOps {
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
       headers.push(authHeader)
-      const response = await this.client.get<ParallelsDesktopLicense>(url, headers)
+      const response = await this.client.get<ParallelsDesktopLicense>(
+        url,
+        headers
+      )
       return response.Data
     } catch (error) {
       return await Promise.reject(error)
     }
   }
 
-  async CloneVM(idOrName: string, request: CloneRequest): Promise<CloneResponse> {
+  async CloneVM(
+    idOrName: string,
+    request: CloneRequest
+  ): Promise<CloneResponse> {
     try {
       if (!idOrName) {
         throw new Error('Invalid id or name')
@@ -95,20 +101,30 @@ export class DevOps {
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
       headers.push(authHeader)
-      const response = await this.client.put<CloneResponse>(url, request, headers)
+      const response = await this.client.put<CloneResponse>(
+        url,
+        request,
+        headers
+      )
       return response.Data
     } catch (error) {
       return await Promise.reject(error)
     }
   }
 
-  async pullCatalogImage(request: PullCatalogRequest): Promise<PullCatalogResponse> {
+  async pullCatalogImage(
+    request: PullCatalogRequest
+  ): Promise<PullCatalogResponse> {
     try {
       const url = this.getUrl('/catalog/pull', 'host')
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
       headers.push(authHeader)
-      const response = await this.client.put<PullCatalogResponse>(url, request, headers)
+      const response = await this.client.put<PullCatalogResponse>(
+        url,
+        request,
+        headers
+      )
       return response.Data
     } catch (error) {
       return await Promise.reject(error)
@@ -121,7 +137,11 @@ export class DevOps {
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
       headers.push(authHeader)
-      const response = await this.client.post<CreateVMResponse>(url, request, headers)
+      const response = await this.client.post<CreateVMResponse>(
+        url,
+        request,
+        headers
+      )
       return response.Data
     } catch (error) {
       return await Promise.reject(error)
@@ -184,7 +204,10 @@ export class DevOps {
     }
   }
 
-  async setMachineAction(idOrName: string, action: 'start' | 'stop'): Promise<VirtualMachineStatus> {
+  async setMachineAction(
+    idOrName: string,
+    action: 'start' | 'stop'
+  ): Promise<VirtualMachineStatus> {
     try {
       const url = this.getUrl(`/machines/${idOrName}`, this.target)
       const headers: HttpHeader[] = []
@@ -195,18 +218,32 @@ export class DevOps {
         case 'start': {
           const startUrl = `${url}/start`
           if (this.target === 'orchestrator') {
-            response = await this.client.put<VirtualMachineStatus>(startUrl, null, headers)
+            response = await this.client.put<VirtualMachineStatus>(
+              startUrl,
+              null,
+              headers
+            )
           } else {
-            response = await this.client.get<VirtualMachineStatus>(startUrl, headers)
+            response = await this.client.get<VirtualMachineStatus>(
+              startUrl,
+              headers
+            )
           }
           break
         }
         case 'stop': {
           const stopUrl = `${url}/stop`
           if (this.target === 'orchestrator') {
-            response = await this.client.put<VirtualMachineStatus>(stopUrl, null, headers)
+            response = await this.client.put<VirtualMachineStatus>(
+              stopUrl,
+              null,
+              headers
+            )
           } else {
-            response = await this.client.get<VirtualMachineStatus>(stopUrl, headers)
+            response = await this.client.get<VirtualMachineStatus>(
+              stopUrl,
+              headers
+            )
           }
           break
         }
@@ -220,7 +257,10 @@ export class DevOps {
     }
   }
 
-  async ExecuteOnVm(idOrName: string, request: ExecuteRequest): Promise<ExecuteResponse> {
+  async ExecuteOnVm(
+    idOrName: string,
+    request: ExecuteRequest
+  ): Promise<ExecuteResponse> {
     try {
       if (!idOrName) {
         throw new Error('Invalid id or name')
@@ -230,7 +270,11 @@ export class DevOps {
       const headers: HttpHeader[] = []
       const authHeader = await this.getAuthenticationHeader()
       headers.push(authHeader)
-      const response = await this.client.put<ExecuteResponse>(url, request, headers)
+      const response = await this.client.put<ExecuteResponse>(
+        url,
+        request,
+        headers
+      )
       return response.Data
     } catch (error) {
       return await Promise.reject(error)
@@ -267,7 +311,9 @@ export class DevOps {
     const apiSecret = core.getInput('api-secret')
     const url = `${this.baseUrl}/v1/auth/token`
     if (apiKey && apiSecret) {
-      const encodedKey = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64')
+      const encodedKey = Buffer.from(`${apiKey}:${apiSecret}`).toString(
+        'base64'
+      )
       this.apiKey = encodedKey
       const response: LoginResponse = { apiKey, expires_at: 0 }
       return response

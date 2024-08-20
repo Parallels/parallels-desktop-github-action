@@ -33,19 +33,28 @@ inputs:
     required: false
     default: 'false'
   base_vm:
-    description: 'The name of the base virtual machine to use on clone operations'
+    description:
+      'The name of the base virtual machine to use on clone operations'
     required: false
   machine_name:
-    description: 'The name of the virtual machine to use on clone, start, stop, delete operations'
+    description:
+      'The name of the virtual machine to use on clone, start, stop, delete
+      operations'
     required: false
   base_image:
-    description: 'The name of the base image to use when creating a new virtual machine from the catalog'
+    description:
+      'The name of the base image to use when creating a new virtual machine
+      from the catalog'
     required: false
   machine_cpu_count:
-    description: 'The number of cpus to use when creating a new virtual machine from the catalog'
+    description:
+      'The number of cpus to use when creating a new virtual machine from the
+      catalog'
     required: false
   machine_memory_size:
-    description: 'The amount of memory to use when creating a new virtual machine from the catalog'
+    description:
+      'The amount of memory to use when creating a new virtual machine from the
+      catalog'
     required: false
   run:
     description: 'The run command to execute on the virtual machine'
@@ -54,7 +63,9 @@ inputs:
     description: 'Whether to start the virtual machine after the operation'
     required: false
   max_attempts:
-    description: 'The maximum number of attempts to make when waiting for the operation to complete'
+    description:
+      'The maximum number of attempts to make when waiting for the operation to
+      complete'
     required: false
     default: '1'
   timeout_seconds:

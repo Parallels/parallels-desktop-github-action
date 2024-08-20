@@ -41,7 +41,9 @@ export class ImageHost {
       imageUrl = imageUrl.slice(lastAtSignIndex + 1, imageUrl.length)
     }
 
-    imageUrl = imageUrl.endsWith('/') ? (imageUrl = imageUrl.slice(0, -1)) : imageUrl
+    imageUrl = imageUrl.endsWith('/')
+      ? (imageUrl = imageUrl.slice(0, -1))
+      : imageUrl
 
     const hostParts = imageUrl.split('/')
     this.host = hostParts[0]
@@ -114,7 +116,11 @@ export class ImageHost {
       result.message = 'Schema is missing'
       return result
     }
-    if (this.schema !== 'http' && this.schema !== 'https' && this.schema !== 'local') {
+    if (
+      this.schema !== 'http' &&
+      this.schema !== 'https' &&
+      this.schema !== 'local'
+    ) {
       result.message = 'Invalid schema'
       return result
     }

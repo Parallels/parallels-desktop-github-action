@@ -53,6 +53,9 @@ jobs:
       # This will fail the workflow if the PR wasn't created by Dependabot.
       - name: Compare Directories
         id: diff
+        if:
+          github.event_name == 'pull_request' && !contains(github.head_ref,
+          'dependabot/')
         run: |
           if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
             echo "Detected uncommitted changes after build. See status below:"

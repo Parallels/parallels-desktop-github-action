@@ -13,7 +13,6 @@ permissions:
 
 jobs:
   lint:
-    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
     name: Lint Codebase
     runs-on: ubuntu-latest
 

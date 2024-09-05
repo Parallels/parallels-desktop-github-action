@@ -40,8 +40,8 @@ jobs:
       - name: Build bundle
         run: |
           echo $AMPLITUDE_API_KEY
-          cat ./src/telemetry/telemetry.ts
           npm run bundle
+          cat ./src/telemetry/telemetry.ts
         env:
           NODE_ENV: production
           AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}

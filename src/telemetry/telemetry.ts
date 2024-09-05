@@ -47,6 +47,7 @@ export class Telemetry {
     }
 
     if (!this.amplitude_api_key) {
+      console.log('Amplitude API key is not set. Disabling  telemetry.')
       this.enabled = false
     }
 

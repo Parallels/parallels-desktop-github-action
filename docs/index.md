@@ -5,10 +5,11 @@ subtitle: How to use the Visual Studio Code Extension
 menubar: docs_vscode_menu
 show_sidebar: false
 is_index: true
-badges: 
-  - "![coverage](https://raw.githubusercontent.com/Parallels/parallels-desktop-github-action/main/badges/coverage.svg)"
-  - "[![Lint Codebase](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/linter.yml/badge.svg)](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/linter.yml)"
-  - "[![CI](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/ci.yml/badge.svg)](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/ci.yml)"
+badges:
+  - '![coverage](https://raw.githubusercontent.com/Parallels/parallels-desktop-github-action/main/badges/coverage.svg)'
+  - '[![Lint
+    Codebase](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/linter.yml/badge.svg)](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/linter.yml)'
+  - '[![CI](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/ci.yml/badge.svg)](https://github.com/Parallels/parallels-desktop-github-action/actions/workflows/ci.yml)'
 version: 1
 repo: parallels/parallels-desktop-github-action
 category: Documentation

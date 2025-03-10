@@ -4,7 +4,7 @@ import {
   Telemetry
 } from '../telemetry/telemetry'
 import DevOps from '../devops/devops'
-import * as core from '@actions/core'
+import { getInput, info, setFailed } from '@actions/core'
 
 export async function StopUseCase(
   telemetry: Telemetry,
@@ -25,8 +25,8 @@ export async function StopUseCase(
   }
 
   try {
-    const MACHINE_NAME = core.getInput('machine_name')
-    core.info(`Stopping virtual machine ${MACHINE_NAME}`)
+    const MACHINE_NAME = getInput('machine_name')
+    info(`Stopping virtual machine ${MACHINE_NAME}`)
 
     const machineStatus = await client.getMachineStatus(MACHINE_NAME)
     if (machineStatus.status === 'stopped') {
@@ -36,7 +36,7 @@ export async function StopUseCase(
     if (machineStatus.status === 'running') {
       await client.setMachineAction(MACHINE_NAME, 'stop')
     } else {
-      core.setFailed(
+      setFailed(
         `Error stopping virtual machine ${MACHINE_NAME}: the current status is not running but instead ${machineStatus.status}`
       )
       return false
@@ -45,7 +45,7 @@ export async function StopUseCase(
     await telemetry.track(event)
     return true
   } catch (error) {
-    core.setFailed(`Error stopping virtual machine: ${error}`)
+    setFailed(`Error stopping virtual machine: ${error}`)
     event.properties?.push({
       name: 'error',
       value: `${error}`

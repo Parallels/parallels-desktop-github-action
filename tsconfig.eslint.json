@@ -16,5 +16,9 @@
     "newLine": "lf",
     "allowSyntheticDefaultImports": true
   },
-  "exclude": ["./dist", "./node_modules", "./coverage"]
+  "exclude": [
+    "./dist",
+    "./node_modules",
+    "./coverage"
+  ]
 }

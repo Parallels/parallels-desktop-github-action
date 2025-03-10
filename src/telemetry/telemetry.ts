@@ -1,4 +1,4 @@
-import * as amplitude from '@amplitude/analytics-node'
+import { init, Types, track, flush } from '@amplitude/analytics-node'
 
 export const AMPLITUDE_API_KEY = ''
 const AMPLITUDE_EVENT_PREFIX = 'PD-GITHUB-EXTENSION::'
@@ -51,9 +51,9 @@ export class Telemetry {
       this.enabled = false
     }
 
-    await amplitude.init(this.amplitude_api_key, {
+    await init(this.amplitude_api_key, {
       flushIntervalMillis: 100,
-      logLevel: amplitude.Types.LogLevel.Error
+      logLevel: Types.LogLevel.Error
     }).promise
   }
 
@@ -83,13 +83,13 @@ export class Telemetry {
       properties[property.name] = property.value
     }
 
-    amplitude.track(event.event, properties, {
+    track(event.event, properties, {
       user_id: this.userId
     })
   }
 
   flush() {
-    amplitude.flush()
+    flush()
   }
 }
 

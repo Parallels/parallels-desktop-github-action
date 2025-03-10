@@ -1,4 +1,4 @@
-import * as core from '@actions/core'
+import { getInput, warning, setFailed, info, setOutput } from '@actions/core'
 import { START_EVENT, Telemetry } from './telemetry/telemetry'
 import DevOps from './devops/devops'
 import { HealthUseCase } from './use_cases/health'
@@ -17,10 +17,10 @@ export async function run(telemetry: Telemetry): Promise<void> {
   // Send the start event
   try {
     await telemetry.track(START_EVENT)
-    const operation = core.getInput('operation')
-    const orchestrator_url = core.getInput('orchestrator_url')
-    const host_url = core.getInput('host_url')
-    const is_insecure = core.getInput('insecure') === 'true'
+    const operation = getInput('operation')
+    const orchestrator_url = getInput('orchestrator_url')
+    const host_url = getInput('host_url')
+    const is_insecure = getInput('insecure') === 'true'
 
     let schema = 'https'
     let url = orchestrator_url
@@ -30,7 +30,7 @@ export async function run(telemetry: Telemetry): Promise<void> {
       schema = 'http'
     }
     if (orchestrator_url && host_url) {
-      core.warning(
+      warning(
         'Both orchestrator_url and host_url are set. Using orchestrator_url'
       )
     }
@@ -40,7 +40,7 @@ export async function run(telemetry: Telemetry): Promise<void> {
     }
 
     if (!url) {
-      core.setFailed('Either orchestrator_url or host_url must be set')
+      setFailed('Either orchestrator_url or host_url must be set')
       return
     }
 
@@ -55,7 +55,7 @@ export async function run(telemetry: Telemetry): Promise<void> {
       // checking if the host is alive and running
       const health = await devops.getHealthStatus()
       if (health !== 'up') {
-        core.setFailed(`Host is down: ${baseUrl}`)
+        setFailed(`Host is down: ${baseUrl}`)
         return
       }
       if (is_orchestrator) {
@@ -72,13 +72,13 @@ export async function run(telemetry: Telemetry): Promise<void> {
       }
     }
 
-    core.info(`Starting operation: ${operation}`)
+    info(`Starting operation: ${operation}`)
     switch (operation) {
       case 'test':
-        core.setOutput('vm_id', 'test_vm_id')
-        core.setOutput('vm_name', 'test_vm_name')
-        core.setOutput('host', 'test_host')
-        core.info('Test operation')
+        setOutput('vm_id', 'test_vm_id')
+        setOutput('vm_name', 'test_vm_name')
+        setOutput('host', 'test_host')
+        info('Test operation')
         break
       case 'health-check':
         await HealthUseCase(telemetry, devops)
@@ -102,10 +102,10 @@ export async function run(telemetry: Telemetry): Promise<void> {
         await RunUseCase(telemetry, devops)
         break
       default:
-        core.setFailed(`Invalid operation: ${operation}`)
+        setFailed(`Invalid operation: ${operation}`)
     }
   } catch (error) {
     console.log(error)
-    core.setFailed('error')
+    setFailed('error')
   }
 }

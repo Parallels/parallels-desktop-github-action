@@ -14,7 +14,13 @@
     "strict": true,
     "skipLibCheck": true,
     "newLine": "lf",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
   },
-  "exclude": ["./dist", "./node_modules", "__tests__", "./coverage"]
+  "exclude": [
+    "./dist",
+    "./node_modules",
+    "__tests__",
+    "./coverage"
+  ]
 }

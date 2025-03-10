@@ -1,5 +1,5 @@
 import HttpClient, { HttpHeader, HttpResponse } from '../api_client/api_client'
-import * as core from '@actions/core'
+import { getInput } from '@actions/core'
 import { HealthProbeResponse } from './models/health_probe'
 import { LoginRequest, LoginResponse } from './models/login'
 import { VirtualMachine } from './models/virtual_machine'
@@ -305,10 +305,10 @@ export class DevOps {
   }
 
   async login(): Promise<LoginResponse> {
-    const username = core.getInput('username')
-    const password = core.getInput('password')
-    const apiKey = core.getInput('api-key')
-    const apiSecret = core.getInput('api-secret')
+    const username = getInput('username')
+    const password = getInput('password')
+    const apiKey = getInput('api-key')
+    const apiSecret = getInput('api-secret')
     const url = `${this.baseUrl}/v1/auth/token`
     if (apiKey && apiSecret) {
       const encodedKey = Buffer.from(`${apiKey}:${apiSecret}`).toString(

@@ -4,7 +4,7 @@ import {
   Telemetry
 } from '../telemetry/telemetry'
 import DevOps from '../devops/devops'
-import * as core from '@actions/core'
+import { info, getInput, setFailed, setOutput } from '@actions/core'
 import ImageHost from '../image_host'
 import { v4 as uuidv4 } from 'uuid'
 import { CreateVmRequest, CreateVmRequestSpecs } from '../devops/models/create'
@@ -28,14 +28,14 @@ export async function PullUseCase(
   }
 
   try {
-    core.info('Creating a virtual machine')
+    info('Creating a virtual machine')
     let vmId = ''
     let host = ''
     const imageHost = new ImageHost()
-    imageHost.parse(core.getInput('base_image'))
+    imageHost.parse(getInput('base_image'))
     const isValid = imageHost.validate()
     if (!isValid) {
-      core.setFailed(`Invalid base image url ${core.getInput('base_image')}`)
+      setFailed(`Invalid base image url ${getInput('base_image')}`)
       return false
     }
 
@@ -48,21 +48,21 @@ export async function PullUseCase(
       host = response.host
     }
 
-    core.setOutput('vm_id', vmId)
-    core.setOutput('vm_name', request.name)
-    core.setOutput('host', host)
+    setOutput('vm_id', vmId)
+    setOutput('vm_name', request.name)
+    setOutput('host', host)
 
-    const startAfterCreate = core.getInput('start_after_op')
+    const startAfterCreate = getInput('start_after_op')
     if (startAfterCreate === 'true' && response.current_state !== 'running') {
-      core.info('Starting virtual machine')
+      info('Starting virtual machine')
       await client.setMachineAction(vmId, 'start')
-      core.info(`Started virtual machine: ${vmId}`)
+      info(`Started virtual machine: ${vmId}`)
     }
 
     telemetry.track(event)
     return true
   } catch (error) {
-    core.setFailed(`Error pulling virtual machine: ${error}`)
+    setFailed(`Error pulling virtual machine: ${error}`)
     event.properties?.push({
       name: 'error',
       value: `${error}`
@@ -84,8 +84,8 @@ function generateCreateMachineRequest(imageHost: ImageHost): CreateVmRequest {
     }
   }
   const specs: CreateVmRequestSpecs = {}
-  const requestCpus = core.getInput('machine_cpu_count')
-  const requestMemory = core.getInput('machine_memory_size')
+  const requestCpus = getInput('machine_cpu_count')
+  const requestMemory = getInput('machine_memory_size')
   if (requestCpus) {
     specs.cpu = requestCpus
   }

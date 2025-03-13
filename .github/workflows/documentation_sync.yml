@@ -1,0 +1,33 @@
+name: Publish Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**/*'
+
+permissions:
+  contents: read
+  packages: read
+  statuses: write
+
+jobs:
+  lint:
+    name: Publish Documentation
+    runs-on: ubuntu-latest
+    env:
+      REPOSITORY: 'https://github.com/Parallels/prl-devops-service'
+      DEST_FOLDER: 'docs/docs/github-actions'
+      PAT: ${{ secrets.PARALLELS_WORKFLOW_PAT }}
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Publish Documentation
+        id: publish-docs
+        run: |
+          ./.github/workflow_scripts/sync-documentation.sh --src ./docs --repository $REPOSITORY --dest $DEST_FOLDER --pat $PAT

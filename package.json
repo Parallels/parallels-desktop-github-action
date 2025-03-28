@@ -33,7 +33,7 @@
     "ci-test": "jest --runInBand",
     "format:write": "prettier --write **/*.ts",
     "format:check": "prettier --check **/*.ts",
-    "lint": "npx eslint . -c ./.github/linters/.eslintrc.yml",
+    "lint": "npx eslint . -c ./.github/linters/eslint.config.mjs",
     "super-linter": "",
     "package": "ncc build src/index.ts --license licenses.txt",
     "package:watch": "npm run package -- --watch",
@@ -43,7 +43,7 @@
   },
   "license": "fair.io",
   "eslintConfig": {
-    "extends": "./.github/linters/.eslintrc.yml"
+    "extends": "./.github/linters/eslint.config.mjs"
   },
   "jest": {
     "verbose": true,

@@ -48,3 +48,5 @@ jobs:
           VALIDATE_CHECKOV: false
           VALIDATE_GITHUB_ACTIONS: false
           VALIDATE_TYPESCRIPT_STANDARD: false
+          VALIDATE_JSON: false
+          VALIDATE_TYPESCRIPT_ES: false

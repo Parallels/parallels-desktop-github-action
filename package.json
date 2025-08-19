@@ -78,7 +78,7 @@
     "@actions/exec": "^1.1.1",
     "@actions/http-client": "^2.2.3",
     "@actions/tool-cache": "^2.0.2",
-    "@amplitude/analytics-node": "^1.4.2",
+    "@amplitude/analytics-node": "^1.5.2",
     "axios": "^1.11.0",
     "fast-xml-parser": "^5.2.5",
     "jsdom": "^26.1.0",

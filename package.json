@@ -85,7 +85,7 @@
     "lodash": "^4.17.21",
     "string-pixel-width": "^1.11.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
-    "uuid": "^11.1.0"
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",

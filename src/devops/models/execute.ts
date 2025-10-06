@@ -1,9 +1,9 @@
 export interface ExecuteRequest {
-	command: string;
+  command: string
 }
 
 export interface ExecuteResponse {
-	stdout: string;
-	stderr: string;
-	exit_code: number;
+  stdout: string
+  stderr: string
+  exit_code: number
 }

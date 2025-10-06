@@ -1,13 +1,16 @@
 import {
-  AmplitudeEvent,
+  type AmplitudeEvent,
   EVENT_CREATE_USE_CASE as EVENT_PULL_USE_CASE,
-  Telemetry
+  type Telemetry
 } from '../telemetry/telemetry'
-import DevOps from '../devops/devops'
+import type DevOps from '../devops/devops'
 import * as core from '@actions/core'
 import ImageHost from '../image_host'
 import { v4 as uuidv4 } from 'uuid'
-import { CreateVmRequest, CreateVmRequestSpecs } from '../devops/models/create'
+import type {
+  CreateVmRequest,
+  CreateVmRequestSpecs
+} from '../devops/models/create'
 
 export async function PullUseCase(
   telemetry: Telemetry,

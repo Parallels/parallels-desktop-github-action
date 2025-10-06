@@ -1,12 +1,12 @@
 import {
-  AmplitudeEvent,
+  type AmplitudeEvent,
   EVENT_CLONE_USE_CASE,
-  Telemetry
+  type Telemetry
 } from '../telemetry/telemetry'
-import DevOps from '../devops/devops'
+import type DevOps from '../devops/devops'
 import * as core from '@actions/core'
 import { v4 as uuidv4 } from 'uuid'
-import { CloneRequest } from '../devops/models/clone'
+import type { CloneRequest } from '../devops/models/clone'
 
 export async function CloneUseCase(
   telemetry: Telemetry,

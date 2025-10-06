@@ -41,9 +41,9 @@ export class ImageHost {
       imageUrl = imageUrl.slice(lastAtSignIndex + 1, imageUrl.length)
     }
 
-    imageUrl = imageUrl.endsWith('/')
-      ? (imageUrl = imageUrl.slice(0, -1))
-      : imageUrl
+    if (imageUrl.endsWith('/')) {
+      imageUrl = imageUrl.slice(0, -1)
+    }
 
     const hostParts = imageUrl.split('/')
     this.host = hostParts[0]

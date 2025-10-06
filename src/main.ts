@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import { START_EVENT, Telemetry } from './telemetry/telemetry'
+import { START_EVENT, type Telemetry } from './telemetry/telemetry'
 import DevOps from './devops/devops'
 import { HealthUseCase } from './use_cases/health'
 import { PullUseCase } from './use_cases/pull'

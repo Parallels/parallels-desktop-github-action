@@ -93,7 +93,7 @@
     "@babel/preset-env": "^7.28.3",
     "@types/axios": "^0.14.4",
     "@types/jest": "^30.0.0",
-    "@types/jsdom": "^21.1.7",
+    "@types/jsdom": "^27.0.0",
     "@types/node": "^24.6.2",
     "@types/string-pixel-width": "^1.10.3",
     "@types/uuid": "^11.0.0",

@@ -1,15 +1,18 @@
-import HttpClient, { HttpHeader, HttpResponse } from '../api_client/api_client'
+import HttpClient, {
+  type HttpHeader,
+  type HttpResponse
+} from '../api_client/api_client'
 import * as core from '@actions/core'
-import { HealthProbeResponse } from './models/health_probe'
-import { LoginRequest, LoginResponse } from './models/login'
-import { VirtualMachine } from './models/virtual_machine'
-import { HealthCheck as HealthCheckResponse } from './models/health_check'
-import { ParallelsDesktopLicense } from './models/parallels-license'
-import { PullCatalogRequest, PullCatalogResponse } from './models/catalog'
-import { CloneRequest, CloneResponse } from './models/clone'
-import { VirtualMachineStatus } from './models/status'
-import { ExecuteRequest, ExecuteResponse } from './models/execute'
-import { CreateVmRequest, CreateVMResponse } from './models/create'
+import type { HealthProbeResponse } from './models/health_probe'
+import type { LoginRequest, LoginResponse } from './models/login'
+import type { VirtualMachine } from './models/virtual_machine'
+import type { HealthCheck as HealthCheckResponse } from './models/health_check'
+import type { ParallelsDesktopLicense } from './models/parallels-license'
+import type { PullCatalogRequest, PullCatalogResponse } from './models/catalog'
+import type { CloneRequest, CloneResponse } from './models/clone'
+import type { VirtualMachineStatus } from './models/status'
+import type { ExecuteRequest, ExecuteResponse } from './models/execute'
+import type { CreateVmRequest, CreateVMResponse } from './models/create'
 
 export class DevOps {
   baseUrl: string

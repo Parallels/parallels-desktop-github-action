@@ -1,11 +1,11 @@
 import {
-  AmplitudeEvent,
+  type AmplitudeEvent,
   EVENT_RUN_USE_CASE,
-  Telemetry
+  type Telemetry
 } from '../telemetry/telemetry'
-import DevOps from '../devops/devops'
+import type DevOps from '../devops/devops'
 import * as core from '@actions/core'
-import { ExecuteRequest } from '../devops/models/execute'
+import type { ExecuteRequest } from '../devops/models/execute'
 
 export async function RunUseCase(
   telemetry: Telemetry,

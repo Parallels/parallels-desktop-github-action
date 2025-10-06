@@ -1,10 +1,10 @@
 import {
-  AmplitudeEvent,
+  type AmplitudeEvent,
   EVENT_HEALTH_USE_CASE,
-  Telemetry
+  type Telemetry
 } from '../telemetry/telemetry'
-import DevOps from '../devops/devops'
-import { HealthCheck } from '../devops/models/health_check'
+import type DevOps from '../devops/devops'
+import type { HealthCheck } from '../devops/models/health_check'
 
 export async function HealthUseCase(
   telemetry: Telemetry,

@@ -1,9 +1,9 @@
 import {
-  AmplitudeEvent,
+  type AmplitudeEvent,
   EVENT_DELETE_USE_CASE,
-  Telemetry
+  type Telemetry
 } from '../telemetry/telemetry'
-import DevOps from '../devops/devops'
+import type DevOps from '../devops/devops'
 import * as core from '@actions/core'
 
 export async function DeleteUseCase(

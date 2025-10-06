@@ -5,7 +5,7 @@ import type {
   RawAxiosRequestHeaders,
   AxiosError
 } from 'axios'
-import { APIError } from '../devops/models/api_error'
+import type { APIError } from '../devops/models/api_error'
 
 export interface HttpHeader {
   name: string

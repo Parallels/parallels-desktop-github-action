@@ -51,5 +51,5 @@ jobs:
           VALIDATE_TYPESCRIPT_STANDARD: false
           VALIDATE_JSON: false
           VALIDATE_TYPESCRIPT_ES: false
-          BIOME_FORMAT: false
-          BIOME_LINT: false
+          VALIDATE_BIOME_FORMAT: false
+          VALIDATE_BIOME_LINT: false

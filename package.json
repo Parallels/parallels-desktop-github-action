@@ -94,7 +94,7 @@
     "@types/axios": "^0.14.4",
     "@types/jest": "^30.0.0",
     "@types/jsdom": "^27.0.0",
-    "@types/node": "^24.10.1",
+    "@types/node": "^25.0.3",
     "@types/string-pixel-width": "^1.11.0",
     "@types/uuid": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^8.51.0",

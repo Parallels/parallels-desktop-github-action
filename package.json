@@ -77,7 +77,7 @@
     "@actions/core": "^2.0.1",
     "@actions/exec": "^2.0.0",
     "@actions/http-client": "^3.0.0",
-    "@actions/tool-cache": "^2.0.2",
+    "@actions/tool-cache": "^3.0.0",
     "@amplitude/analytics-node": "^1.5.29",
     "axios": "^1.13.2",
     "fast-xml-parser": "^5.3.3",

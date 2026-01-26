@@ -82,7 +82,7 @@
     "axios": "^1.13.2",
     "fast-xml-parser": "^5.3.3",
     "jsdom": "^27.4.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "string-pixel-width": "^1.11.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "uuid": "^13.0.0"

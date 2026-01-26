@@ -115,6 +115,9 @@
   "overrides": {
     "diff": "8.0.3",
     "undici": "7.18.2",
-    "glob": "10.5.0"
+    "glob": "10.5.0",
+    "test-exclude": {
+      "glob": "7.2.3"
+    }
   }
 }

@@ -28,7 +28,7 @@
   },
   "scripts": {
     "bundle": "npm run insert-key && npm run format:write && npm run package && npm run uglyfy",
-    "insert-key": "sed -i \"s/export const AMPLITUDE_API_KEY = ''/export const AMPLITUDE_API_KEY = '$AMPLITUDE_API_KEY'/g\" ./src/telemetry/telemetry.ts",
+    "insert-key": "sed -i.bak \"s/export const AMPLITUDE_API_KEY = ''/export const AMPLITUDE_API_KEY = '$AMPLITUDE_API_KEY'/g\" ./src/telemetry/telemetry.ts && rm ./src/telemetry/telemetry.ts.bak",
     "uglyfy": "uglifyjs ./dist/index.js -o ./dist/index.js",
     "ci-test": "jest --runInBand",
     "format:write": "prettier --write **/*.ts",

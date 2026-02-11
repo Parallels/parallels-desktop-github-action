@@ -76,7 +76,7 @@
   "dependencies": {
     "@actions/core": "^2.0.2",
     "@actions/exec": "^2.0.0",
-    "@actions/http-client": "^3.0.0",
+    "@actions/http-client": "^4.0.0",
     "@actions/tool-cache": "^3.0.0",
     "@amplitude/analytics-node": "^1.5.33",
     "axios": "^1.13.5",

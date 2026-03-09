@@ -35,8 +35,8 @@
     "format:check": "prettier --check **/*.ts",
     "lint": "npx eslint . -c ./.github/linters/eslint.config.mjs",
     "super-linter": "",
-    "package": "ncc build src/index.ts --license licenses.txt",
-    "package:watch": "npm run package -- --watch",
+    "package": "tsup && generate-license-file --input package.json --output dist/licenses.txt --overwrite",
+    "package:watch": "tsup --watch",
     "lint:standard": "ts-standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --project tsconfig.eslint.json",
     "test": "(jest && make-coverage-badge --output-path ./badges/coverage.svg) || make-coverage-badge --output-path ./badges/coverage.svg",
     "all": "npm run format:write && npm run lint && npm run test && npm run package"
@@ -105,12 +105,14 @@
     "eslint-plugin-github": "^6.0.0",
     "eslint-plugin-jest": "^29.13.0",
     "jest": "^30.2.0",
+    "generate-license-file": "^4.1.1",
     "make-coverage-badge": "^1.2.0",
     "prettier": "^3.8.1",
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
-    "uglify-js": "^3.19.3"
+    "uglify-js": "^3.19.3",
+    "tsup": "^8.5.0"
   },
   "overrides": {
     "diff": "8.0.3",

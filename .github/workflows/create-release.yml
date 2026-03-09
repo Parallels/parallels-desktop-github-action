@@ -8,11 +8,11 @@ on:
       version:
         required: true
         type: choice
-        description: 'What type of release is this'
+        description: "What type of release is this"
         options:
-          - 'major'
-          - 'minor'
-          - 'patch'
+          - "major"
+          - "minor"
+          - "patch"
 jobs:
   create-release-pr:
     name: Create release PR
@@ -21,7 +21,7 @@ jobs:
       contents: write
       pull-requests: write
     env:
-      new_version: ''
+      new_version: ""
     steps:
       - name: Checkout
         id: checkout
@@ -50,10 +50,11 @@ jobs:
           AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
       - name: Push
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PARALLELS_WORKFLOW_PAT}}
         run: |
           git config --global user.email "cjlapao@gmail.com"
           git config --global user.name "cjlapao"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
 
           NEW_VERSION=$(./.github/workflow_scripts/increment-version.sh -t ${{ inputs.version }} -f VERSION)
           echo "$NEW_VERSION" > ./VERSION

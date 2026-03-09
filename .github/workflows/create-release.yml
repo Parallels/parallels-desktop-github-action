@@ -54,7 +54,7 @@ jobs:
         run: |
           git config --global user.email "cjlapao@gmail.com"
           git config --global user.name "cjlapao"
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://oauth2:${GH_TOKEN}@github.com/${{ github.repository }}.git
 
           NEW_VERSION=$(./.github/workflow_scripts/increment-version.sh -t ${{ inputs.version }} -f VERSION)
           echo "$NEW_VERSION" > ./VERSION

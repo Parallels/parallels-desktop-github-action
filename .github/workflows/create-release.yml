@@ -8,11 +8,11 @@ on:
       version:
         required: true
         type: choice
-        description: "What type of release is this"
+        description: 'What type of release is this'
         options:
-          - "major"
-          - "minor"
-          - "patch"
+          - 'major'
+          - 'minor'
+          - 'patch'
 jobs:
   create-release-pr:
     name: Create release PR
@@ -21,7 +21,7 @@ jobs:
       contents: write
       pull-requests: write
     env:
-      new_version: ""
+      new_version: ''
     steps:
       - name: Checkout
         id: checkout

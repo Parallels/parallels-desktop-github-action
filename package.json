@@ -80,7 +80,7 @@
     "@actions/tool-cache": "^4.0.0",
     "@amplitude/analytics-node": "^1.5.42",
     "axios": "^1.13.6",
-    "fast-xml-parser": "^5.3.5",
+    "fast-xml-parser": "^5.5.6",
     "jsdom": "^28.1.0",
     "lodash": "^4.17.23",
     "string-pixel-width": "^1.11.0",

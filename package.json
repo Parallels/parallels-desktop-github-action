@@ -79,7 +79,7 @@
     "@actions/http-client": "^4.0.0",
     "@actions/tool-cache": "^4.0.0",
     "@amplitude/analytics-node": "^1.5.49",
-    "axios": "^1.13.6",
+    "axios": "^1.14.0",
     "fast-xml-parser": "^5.5.8",
     "jsdom": "^29.0.1",
     "lodash": "^4.17.23",

@@ -1,4 +1,0 @@
-rules:
-  secrets-outside-env:
-    ignore:
-      - create-release.yml

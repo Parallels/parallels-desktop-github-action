@@ -841,7 +841,7 @@ software or this license, under any kind of legal claim._**
 
 The following npm package may be included in this product:
 
- - axios@1.13.6
+ - axios@1.13.5
 
 This package contains the following license:
 
@@ -2410,7 +2410,6 @@ ISC
 The following npm packages may be included in this product:
 
  - eastasianwidth@0.2.0
- - safe-json-stringify@1.2.0
  - string-pixel-width@1.11.0
 
 These packages each contain the following license:
@@ -2723,8 +2722,8 @@ SOFTWARE.
 
 The following npm packages may be included in this product:
 
- - @amplitude/analytics-core@2.40.2
- - @amplitude/analytics-node@1.5.39
+ - @amplitude/analytics-core@2.37.0
+ - @amplitude/analytics-node@1.5.34
 
 These packages each contain the following license:
 

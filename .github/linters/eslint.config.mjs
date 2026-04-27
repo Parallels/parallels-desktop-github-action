@@ -23,6 +23,7 @@ export default defineConfig([
     '**/coverage/.*',
     '**/__tests__/.*',
     '**/*.json',
+    'scripts/*.js',
     'src/index.ts',
     '**/*.config.mjs',
     'coverage/**',

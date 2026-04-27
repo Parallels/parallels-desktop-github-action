@@ -38,7 +38,7 @@
     "package": "tsup && generate-license-file --input package.json --output dist/licenses.txt --overwrite",
     "package:watch": "tsup --watch",
     "lint:standard": "ts-standard --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin --project tsconfig.eslint.json",
-    "test": "(jest && make-coverage-badge --output-path ./badges/coverage.svg) || make-coverage-badge --output-path ./badges/coverage.svg",
+    "test": "jest && node scripts/generate-coverage-badge.js",
     "all": "npm run format:write && npm run lint && npm run test && npm run package"
   },
   "license": "fair.io",
@@ -113,7 +113,7 @@
     "prettier": "^3.8.3",
     "ts-jest": "^29.4.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "uglify-js": "^3.19.3",
     "tsup": "^8.5.0"
   },

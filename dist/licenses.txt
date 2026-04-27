@@ -778,7 +778,7 @@ software or this license, under any kind of legal claim._**
 
 The following npm package may be included in this product:
 
- - axios@1.13.6
+ - axios@1.15.2
 
 This package contains the following license:
 
@@ -1427,7 +1427,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 The following npm package may be included in this product:
 
- - jsdom@29.0.1
+ - jsdom@29.0.2
 
 This package contains the following license:
 
@@ -2045,7 +2045,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 The following npm package may be included in this product:
 
- - follow-redirects@1.15.11
+ - follow-redirects@1.16.0
 
 This package contains the following license:
 
@@ -2220,7 +2220,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The following npm package may be included in this product:
 
- - lodash@4.17.23
+ - lodash@4.18.1
 
 This package contains the following license:
 
@@ -2286,6 +2286,7 @@ ISC
 
 The following npm packages may be included in this product:
 
+ - @nodable/entities@2.1.0
  - eastasianwidth@0.2.0
  - safe-json-stringify@1.2.0
  - string-pixel-width@1.11.0
@@ -2420,7 +2421,7 @@ SOFTWARE.
 
 The following npm package may be included in this product:
 
- - fast-xml-parser@5.5.8
+ - fast-xml-parser@5.7.1
 
 This package contains the following license:
 
@@ -2570,7 +2571,7 @@ SOFTWARE.
 
 The following npm package may be included in this product:
 
- - strnum@2.2.2
+ - strnum@2.2.3
 
 This package contains the following license:
 
@@ -2600,8 +2601,8 @@ SOFTWARE.
 
 The following npm packages may be included in this product:
 
- - @amplitude/analytics-core@2.43.0
- - @amplitude/analytics-node@1.5.49
+ - @amplitude/analytics-core@2.46.0
+ - @amplitude/analytics-node@1.5.54
 
 These packages each contain the following license:
 
@@ -2721,7 +2722,7 @@ SOFTWARE.
 
 The following npm package may be included in this product:
 
- - path-expression-matcher@1.2.0
+ - path-expression-matcher@1.5.0
 
 This package contains the following license:
 
@@ -2875,7 +2876,37 @@ SOFTWARE.
 
 The following npm package may be included in this product:
 
- - fast-xml-builder@1.1.4
+ - @asamuzakjp/generational-cache@1.0.1
+
+This package contains the following license:
+
+MIT License
+
+Copyright (c) 2026 asamuzaK (Kazz)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-----------
+
+The following npm package may be included in this product:
+
+ - fast-xml-builder@1.1.5
 
 This package contains the following license:
 
@@ -3038,7 +3069,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 The following npm package may be included in this product:
 
- - @asamuzakjp/dom-selector@7.0.4
+ - @asamuzakjp/dom-selector@7.1.1
 
 This package contains the following license:
 
@@ -3068,7 +3099,7 @@ SOFTWARE.
 
 The following npm package may be included in this product:
 
- - @asamuzakjp/css-color@5.0.1
+ - @asamuzakjp/css-color@5.1.11
 
 This package contains the following license:
 
@@ -3352,7 +3383,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The following npm package may be included in this product:
 
- - proxy-from-env@1.1.0
+ - proxy-from-env@2.1.0
 
 This package contains the following license:
 
@@ -3381,7 +3412,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The following npm package may be included in this product:
 
- - uuid@13.0.0
+ - uuid@14.0.0
 
 This package contains the following license:
 
@@ -4052,8 +4083,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 The following npm packages may be included in this product:
 
- - @csstools/css-calc@3.1.1
- - @csstools/css-color-parser@4.0.2
+ - @csstools/css-calc@3.2.0
+ - @csstools/css-color-parser@4.1.0
  - @csstools/css-parser-algorithms@4.0.0
  - @csstools/css-tokenizer@4.0.0
 

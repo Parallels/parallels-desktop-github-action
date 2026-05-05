@@ -98,7 +98,7 @@
     "@types/node": "^25.6.0",
     "@types/string-pixel-width": "^1.11.0",
     "@types/uuid": "^11.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.58.2",
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
     "@typescript-eslint/parser": "^8.41.0",
     "@vercel/ncc": "^0.38.4",
     "babel-preset-jest": "^30.3.0",

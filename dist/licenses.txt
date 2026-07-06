@@ -440,7 +440,7 @@ software or this license, under any kind of legal claim.***
 
 The following npm package may be included in this product:
 
- - axios@1.18.0
+ - axios@1.18.1
 
 This package contains the following license:
 
@@ -1831,8 +1831,8 @@ SOFTWARE.
 
 The following npm packages may be included in this product:
 
- - @amplitude/analytics-core@2.50.0
- - @amplitude/analytics-node@1.5.60
+ - @amplitude/analytics-core@2.51.0
+ - @amplitude/analytics-node@1.5.61
 
 These packages each contain the following license:
 

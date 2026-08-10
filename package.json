@@ -81,7 +81,7 @@
     "@amplitude/analytics-node": "^1.5.69",
     "axios": "^1.18.1",
     "fast-xml-parser": "^5.10.1",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.0.1",
     "lodash": "^4.18.1",
     "string-pixel-width": "^1.11.0",
     "textlint-filter-rule-allowlist": "^4.0.0",

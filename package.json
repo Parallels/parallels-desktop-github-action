@@ -92,7 +92,7 @@
     "@eslint/js": "^10.0.1",
     "@types/axios": "^0.14.4",
     "@types/jest": "^30.0.0",
-    "@types/jsdom": "^28.0.3",
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^26.1.2",
     "@types/string-pixel-width": "^1.11.0",
     "@types/uuid": "^11.0.0",

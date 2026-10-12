@@ -40,6 +40,7 @@ jobs:
         uses: super-linter/super-linter/slim@v9.0.0
         env:
           DEFAULT_BRANCH: main
+          ENABLE_GITHUB_PULL_REQUEST_SUMMARY_COMMENT: false
           FILTER_REGEX_EXCLUDE: dist/**/*
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JAVASCRIPT_DEFAULT_STYLE: prettier

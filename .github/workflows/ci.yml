@@ -57,7 +57,7 @@ jobs:
 
       - name: Test Local Action
         id: test-action
-        uses: ./
+        uses: $/
         with:
           host_url: localhost
           operation: 'test'

@@ -3,7 +3,7 @@ https://www.npmjs.com/package/generate-license-file
 
 The following npm package may be included in this product:
 
- - source-map-js@1.2.1
+ - source-map-js@1.2.2
 
 This package contains the following license:
 
@@ -254,7 +254,7 @@ MIT License
 
 The following npm package may be included in this product:
 
- - js-yaml@4.3.0
+ - js-yaml@4.3.2
 
 This package contains the following license:
 
@@ -376,7 +376,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The following npm package may be included in this product:
 
- - lru-cache@11.5.2
+ - lru-cache@11.5.3
 
 This package contains the following license:
 
@@ -895,7 +895,7 @@ For more information, please see
 
 The following npm package may be included in this product:
 
- - jsdom@30.0.1
+ - jsdom@30.1.1
 
 This package contains the following license:
 
@@ -1278,7 +1278,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The following npm package may be included in this product:
 
- - bidi-js@1.0.3
+ - bidi-js@1.1.0
 
 This package contains the following license:
 
@@ -1379,7 +1379,7 @@ PERFORMANCE OF THIS SOFTWARE.
 The following npm packages may be included in this product:
 
  - data-urls@7.0.0
- - html-encoding-sniffer@6.0.0
+ - html-encoding-sniffer@7.0.0
  - whatwg-mimetype@5.0.0
 
 These packages each contain the following license:
@@ -1680,7 +1680,7 @@ SOFTWARE.
 
 The following npm package may be included in this product:
 
- - @amplitude/analytics-connector@1.6.7
+ - @amplitude/analytics-connector@1.6.8
 
 This package contains the following license:
 
@@ -1800,8 +1800,8 @@ SOFTWARE.
 
 The following npm packages may be included in this product:
 
- - @amplitude/analytics-core@2.55.0
- - @amplitude/analytics-node@1.5.71
+ - @amplitude/analytics-core@2.58.1
+ - @amplitude/analytics-node@1.5.75
 
 These packages each contain the following license:
 
@@ -2159,7 +2159,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 The following npm package may be included in this product:
 
- - @asamuzakjp/dom-selector@8.3.2
+ - @asamuzakjp/dom-selector@9.2.1
 
 This package contains the following license:
 
@@ -2189,7 +2189,7 @@ SOFTWARE.
 
 The following npm package may be included in this product:
 
- - @asamuzakjp/css-color@6.0.7
+ - @asamuzakjp/css-color@7.0.1
 
 This package contains the following license:
 
@@ -2219,8 +2219,8 @@ SOFTWARE.
 
 The following npm packages may be included in this product:
 
- - @csstools/color-helpers@6.1.0
- - @csstools/css-syntax-patches-for-csstree@1.1.7
+ - @csstools/color-helpers@6.1.1
+ - @csstools/css-syntax-patches-for-csstree@1.1.14
 
 These packages each contain the following license:
 
@@ -2446,36 +2446,6 @@ This package contains the following license:
 The MIT License (MIT)
 
 Copyright (c) 2014-2017, Jon Schlinkert.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
------------
-
-The following npm package may be included in this product:
-
- - symbol-tree@3.2.4
-
-This package contains the following license:
-
-The MIT License (MIT)
-
-Copyright (c) 2015 Joris van der Wel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -2742,7 +2712,7 @@ SOFTWARE.
 The following npm packages may be included in this product:
 
  - whatwg-url@16.0.1
- - whatwg-url@17.1.0
+ - whatwg-url@17.1.2
 
 These packages each contain the following license:
 
@@ -2853,10 +2823,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 The following npm packages may be included in this product:
 
- - @csstools/css-calc@3.3.0
- - @csstools/css-color-parser@4.1.10
+ - @csstools/css-calc@3.4.0
+ - @csstools/css-color-parser@4.2.3
  - @csstools/css-parser-algorithms@4.0.0
- - @csstools/css-tokenizer@4.0.0
+ - @csstools/css-tokenizer@4.0.1
 
 These packages each contain the following license:
 
@@ -2885,7 +2855,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The following npm package may be included in this product:
 
- - w3c-xmlserializer@5.0.0
+ - w3c-xmlserializer@6.0.0
 
 This package contains the following license:
 
